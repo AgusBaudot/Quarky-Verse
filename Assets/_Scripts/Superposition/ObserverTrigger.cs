@@ -10,7 +10,7 @@ public class ObserverTrigger : MonoBehaviour
     [SerializeField] private float _tolerance = 0.2f;
 
     [Header("Result")]
-    [SerializeField] private gameObject _objectToActivate; //Puerta, Luz, etc.
+    [SerializeField] private GameObject _objectToActivate; //Puerta, Luz, etc.
     private bool _activated = false;
     
     void Update() 
