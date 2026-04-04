@@ -25,14 +25,14 @@ public class CollapseGlassesController : MonoBehaviour
     [SerializeField] private Camera _thirdPersonCamera;
     [SerializeField] private Camera _firstPersonCamera;
     [SerializeField] private Slider _timerUI;
-
+    private Highlightable _currentHighlight;
     private bool _isActive;
     private readonly List<SuperpositionController> _collapsedObjects = new();
 
     private void Update()
     {
-        if (!_isActive && Input.GetKeyDown(KeyCode.E))
-            StartCoroutine(ActivateGlasses());
+        if (!_isActive && Input.GetKeyDown(KeyCode.E)) StartCoroutine(ActivateGlasses());
+        if (_isActive) HandleHighlight();
     }
 
     //Uses Quantum registry instead of Physics.OverlapSphere.
@@ -45,10 +45,11 @@ public class CollapseGlassesController : MonoBehaviour
         _firstPersonCamera.enabled = true;
         
         _collapsedObjects.Clear();
-        foreach (var controller in QuantumRegistry.Instance.GetInRadius(transform.position, _radius))
+        SuperpositionController target = GetTarget();
+        if (target != null) 
         {
-            controller.Collapse();
-            _collapsedObjects.Add(controller);
+            target.Collapse();
+            _collapsedObjects.Add(target);
         }
 
         float elapsed = 0f;
@@ -69,5 +70,36 @@ public class CollapseGlassesController : MonoBehaviour
         
         if (_timerUI) _timerUI.gameObject.SetActive(false);
         _isActive = false;
+        if (_currentHighlight != null) 
+        {
+            _currentHighlight.SetHighlight(false);
+            _currentHighlight = null;
+        }
+    }
+    private SuperpositionController GetTarget() 
+    {
+        Ray ray = new Ray(_firstPersonCamera.transform.position, _firstPersonCamera.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, _radius)) return hit.collider.GetComponent<SuperpositionController>();
+        return null;
+    }
+    private void HandleHighlight() 
+    {
+        SuperpositionController target = GetTarget();
+        //Apagar hih}ghlight anterior
+        if (_currentHighlight != null) 
+        {
+            _currentHighlight.SetHighlight(false);
+            _currentHighlight = null;
+        } 
+        //Encender nuevo
+        if (target != null) 
+        {
+            Highlightable h = target.GetComponent<Highlightable>();
+            if (h != null) 
+            {
+                h.SetHighlight(true);
+                _currentHighlight = h;
+            }
+        }
     }
 }
