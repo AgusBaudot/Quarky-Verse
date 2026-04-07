@@ -19,7 +19,7 @@ public class ObserverTrigger : MonoBehaviour
         if (_targetObject == null) return;
         //Solo si esta colapsado
         if (_targetObject.IsVisuallyQuantum) return;
-        float dist = Vector3.Distance(_targetObject.transform.position,_targetPosition.position);
+        float dist = Vector3.Distance(_targetObject.transform.position, _targetPosition.position);
         if (dist <= _tolerance) Activate();
 
         //if (Input.GetKeyDown(KeyCode.P))
