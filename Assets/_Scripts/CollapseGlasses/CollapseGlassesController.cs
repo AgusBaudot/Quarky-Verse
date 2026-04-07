@@ -86,7 +86,7 @@ public class CollapseGlassesController : MonoBehaviour
         Ray ray = new Ray(_firstPersonCamera.transform.position, _firstPersonCamera.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, _radius)) 
         {
-            Debug.Log("Raycast hit: " + hit.collider.name);
+            //Debug.Log("Raycast hit: " + hit.collider.name);
             return hit.collider.GetComponent<SuperpositionController>();
         }
         return null;
@@ -106,14 +106,14 @@ public class CollapseGlassesController : MonoBehaviour
     }
     private void TryCollapseTarget() 
     {
-        Debug.Log("Intentando colapsar objetivo...");
+        //Debug.Log("Intentando colapsar objetivo...");
         SuperpositionController target = GetTarget();
         if (target == null)
         {
-            Debug.Log("No se detectó ningún objetivo para colapsar.");
+            //Debug.Log("No se detectó ningún objetivo para colapsar.");
             return;
         }
-        Debug.Log("Target encontrado: " + target.name);
+        //Debug.Log("Target encontrado: " + target.name);
         target.Collapse();
         if (!_collapsedObjects.Contains(target)) _collapsedObjects.Add(target);
     }

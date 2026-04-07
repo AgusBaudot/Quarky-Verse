@@ -21,7 +21,13 @@ public class ObserverTrigger : MonoBehaviour
         if (_targetObject.IsVisuallyQuantum) return;
         float dist = Vector3.Distance(_targetObject.transform.position,_targetPosition.position);
         if (dist <= _tolerance) Activate();
+
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    Activate();
+        //}
     }
+
     void Activate() 
     {
         if (_objectToActivate != null) _objectToActivate.SetActive(false); //ejemplo: abrir puerta
