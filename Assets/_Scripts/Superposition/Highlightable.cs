@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class Highlightable : MonoBehaviour
+//Excelent candidate for interface. Depend on abstraction, not on concrete things.
+public class Highlightable : MonoBehaviour, IHighlightable
 {
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Color _highlightColor = Color.yellow;
@@ -16,7 +17,7 @@ public class Highlightable : MonoBehaviour
         }
     }
 
-    public void SetHighlight(bool active) 
+    public void SetHighlight(bool active)
     {
         Color c = active ? _highlightColor : _originalColor;
         _renderer.material.SetColor("_BaseColor",c);

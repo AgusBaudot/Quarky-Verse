@@ -25,7 +25,7 @@ public class CollapseGlassesController : MonoBehaviour
     [SerializeField] private Camera _thirdPersonCamera;
     [SerializeField] private Camera _firstPersonCamera;
     [SerializeField] private Slider _timerUI;
-    private Highlightable _currentHighlight;
+    private IHighlightable _currentHighlight;
     private bool _isActive;
     private readonly List<SuperpositionController> _collapsedObjects = new();
 
@@ -35,11 +35,7 @@ public class CollapseGlassesController : MonoBehaviour
         if (_isActive) 
         {
             HandleHighlight();
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("CLICK detectado");
-                TryCollapseTarget();
-            }
+            TryCollapseTarget();
         }
         
     }
@@ -81,41 +77,49 @@ public class CollapseGlassesController : MonoBehaviour
             _currentHighlight = null;
         }
     }
+
     private SuperpositionController GetTarget() 
     {
         Ray ray = new Ray(_firstPersonCamera.transform.position, _firstPersonCamera.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, _radius)) 
-        {
-            //Debug.Log("Raycast hit: " + hit.collider.name);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity)) //Should be distance, not radius
             return hit.collider.GetComponent<SuperpositionController>();
-        }
+
         return null;
     }
+
     private void HandleHighlight() 
     {
         SuperpositionController target = GetTarget();
-        Highlightable newHighlight = null;
-        if (target != null) newHighlight = target.GetComponent<Highlightable>();
+        IHighlightable newHighlight = null;
+
+        if (target != null)
+            newHighlight = target.GetComponent<IHighlightable>();
+
         // Si es el mismo, no hacer nada
-        if (newHighlight == _currentHighlight) return;
+        if (newHighlight == _currentHighlight)
+            return;
+
         // Apagar anterior
-        if (_currentHighlight != null) _currentHighlight.SetHighlight(false);
+        _currentHighlight?.SetHighlight(false);
+
         // Encender nuevo
-        if (newHighlight != null) newHighlight.SetHighlight(true);
+        newHighlight?.SetHighlight(true);
+
         _currentHighlight = newHighlight;
     }
+
     private void TryCollapseTarget() 
     {
-        //Debug.Log("Intentando colapsar objetivo...");
         SuperpositionController target = GetTarget();
+        
+        //If you sometimes use {} with one-liners, you must always use them. Maintain code coherent.
         if (target == null)
-        {
-            //Debug.Log("No se detectó ningún objetivo para colapsar.");
             return;
-        }
-        //Debug.Log("Target encontrado: " + target.name);
+
         target.Collapse();
-        if (!_collapsedObjects.Contains(target)) _collapsedObjects.Add(target);
+        
+        if (!_collapsedObjects.Contains(target))
+            _collapsedObjects.Add(target);
     }
-    
 }
