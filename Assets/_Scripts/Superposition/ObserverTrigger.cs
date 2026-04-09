@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Put some brief comment describing objective of class
 public class ObserverTrigger : MonoBehaviour
 {
     [Header("Target")]
@@ -10,21 +11,29 @@ public class ObserverTrigger : MonoBehaviour
     [SerializeField] private float _tolerance = 0.2f;
 
     [Header("Result")]
-    [SerializeField] private GameObject _objectToActivate; //Puerta, Luz, etc.
+    [SerializeField] private GameObject _objectToActivate;
+
     private bool _activated = false;
     
-    void Update() 
+    private void Update() 
     {
-        if (_activated) return;
-        if (_targetObject == null) return;
+        if (_activated || _targetObject == null)
+            return;
+
         //Solo si esta colapsado
-        if (_targetObject.IsVisuallyQuantum) return;
+        if (_targetObject.IsVisuallyQuantum)
+            return;
+
         float dist = Vector3.Distance(_targetObject.transform.position,_targetPosition.position);
-        if (dist <= _tolerance) Activate();
+        if (dist <= _tolerance)
+            Activate();
     }
-    void Activate() 
+
+    private void Activate() 
     {
-        if (_objectToActivate != null) _objectToActivate.SetActive(false); //ejemplo: abrir puerta
+        if (_objectToActivate != null)
+            _objectToActivate.SetActive(false); //ejemplo: abrir puerta
+        //What if the puzzle requires to make an object appear instead?
         Debug.Log("Observer puzzle ACTIVATED");
     }
 }
