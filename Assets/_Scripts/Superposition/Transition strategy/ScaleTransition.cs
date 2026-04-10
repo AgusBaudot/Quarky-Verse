@@ -13,8 +13,6 @@ public class ScaleTransition : MonoBehaviour, IQuantumTransition
 {
     [SerializeField] private float _scaleDuration = 0.3f;
     [SerializeField] private float _ghostAlpha = 0.4f;
-    [Tooltip("Pick position from these.")]
-    [SerializeField] private List<Vector3> _fixedOffsets = new();
     [SerializeField] private Transform _ghostParent;
     
     private Renderer _renderer;
@@ -22,6 +20,7 @@ public class ScaleTransition : MonoBehaviour, IQuantumTransition
     
     private List<Vector3> _remaining = new();
     private Dictionary<Vector3, GameObject> _ghosts = new();
+    private List<Vector3> _fixedOffsets = new();
 
     private void Awake()
     {
@@ -33,6 +32,14 @@ public class ScaleTransition : MonoBehaviour, IQuantumTransition
         controller.OnRestore += HandleRestore;
         controller.OnQuantumDeactivated += HandleCollapse;
         controller.OnQuantumActivated += HandleRestore;
+
+        var observer = GetComponent<ObserverTrigger>();
+        if (observer != null)
+        {
+            _fixedOffsets.Clear();
+            foreach (var obs in observer.Observations)
+                _fixedOffsets.Add(obs.offset);
+        }
 
         if (_fixedOffsets.Count == 0)
         {
@@ -148,6 +155,9 @@ public class ScaleTransition : MonoBehaviour, IQuantumTransition
         ghost.transform.rotation = rot;
         ghost.transform.localScale = scale;
         SetAlpha(mr, _ghostAlpha);
+        
+        ghost.transform.SetParent(_ghostParent, true);
+        
         return ghost;
     }
 

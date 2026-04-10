@@ -16,12 +16,12 @@ public class DissolveTransition : MonoBehaviour, IQuantumTransition
     [SerializeField] private float _ghostAlpha = 0.4f;
     [SerializeField] private float _fadeDuration = 0.3f;
     [Tooltip("Pick position from these.")]
-    [SerializeField] private List<Vector3> _fixedOffsets;
     [SerializeField] private Transform _ghostParent;
 
     private Renderer _renderer;
     private Vector3 _originPosition;
     private SuperpositionController _controller;
+    private List<Vector3> _fixedOffsets = new();
     
     private List<Vector3> _remaining = new();
     private Dictionary<Vector3, GameObject> _ghosts = new();
@@ -37,6 +37,14 @@ public class DissolveTransition : MonoBehaviour, IQuantumTransition
         _controller.OnQuantumDeactivated += HandleCollapse;
         _controller.OnQuantumActivated += HandleRestore;
 
+        var observer = GetComponent<ObserverTrigger>();
+        if (observer != null)
+        {
+            _fixedOffsets.Clear();
+            foreach (var obs in observer.Observations)
+                _fixedOffsets.Add(obs.offset);
+        }
+        
         if (_fixedOffsets.Count == 0)
         {
             Debug.LogWarning($"{name}: DissolveTransition has no fixed offsets - object will note move.", this);
@@ -156,7 +164,6 @@ public class DissolveTransition : MonoBehaviour, IQuantumTransition
 
     private GameObject BuildGhost(Vector3 worldPos, Quaternion rot, Vector3 scale)
     {
-        //Instantiate under transform.
         var ghost = new GameObject("QuantumGhost");
         var mf = ghost.AddComponent<MeshFilter>();
         var mr = ghost.AddComponent<MeshRenderer>();
@@ -166,6 +173,9 @@ public class DissolveTransition : MonoBehaviour, IQuantumTransition
         ghost.transform.rotation = rot;
         ghost.transform.localScale = scale;
         SetAlpha(mr, _ghostAlpha);
+        
+        ghost.transform.SetParent(_ghostParent, true);
+        
         return ghost;
     }
 
