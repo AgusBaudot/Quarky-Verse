@@ -12,17 +12,17 @@ using UnityEngine;
 public class InstantTransition : MonoBehaviour, IQuantumTransition
 {
     [SerializeField] private float _ghostAlpha = 0.4f;
-    [Tooltip("Pick position from these.")] [SerializeField]
-    private List<Vector3> _fixedOffsets = new();
-
+    [SerializeField] private Transform _ghostParent;
+    
     private Renderer _renderer;
     private Vector3 _originPosition;
     private SuperpositionController _controller;
+    private readonly List<Vector3> _fixedOffsets = new();
     
     //Shuffle bag: positions not yet visited this cycle
-    private List<Vector3> _remaining = new();
+    private readonly List<Vector3> _remaining = new();
     //All ghost objects keyed by world position for O(1) lookup
-    private Dictionary<Vector3, GameObject> _ghosts = new();
+    private readonly Dictionary<Vector3, GameObject> _ghosts = new();
 
     private void Awake()
     {
@@ -34,6 +34,14 @@ public class InstantTransition : MonoBehaviour, IQuantumTransition
         controller.OnRestore += HandleRestore;
         controller.OnQuantumDeactivated += HandleCollapse; //ghost hides either way
         controller.OnQuantumActivated += HandleRestore; //ghost eligible to reappear
+
+        var observer = GetComponent<ObserverTrigger>();
+        if (observer != null)
+        {
+            _fixedOffsets.Clear();
+            foreach (var obs in observer.Observations)
+                _fixedOffsets.Add(obs.offset);
+        }
 
         if (_fixedOffsets.Count == 0)
         {
@@ -123,6 +131,7 @@ public class InstantTransition : MonoBehaviour, IQuantumTransition
 
     private GameObject BuildGhost(Vector3 worldPos, quaternion rot, Vector3 scale)
     {
+        //Replace for ghost parent scene clean
         var ghost = new GameObject("QuantumGhost");
         var mf = ghost.AddComponent<MeshFilter>();
         var mr = ghost.AddComponent<MeshRenderer>();

@@ -15,8 +15,9 @@ public class DissolveTransition : MonoBehaviour, IQuantumTransition
 {
     [SerializeField] private float _ghostAlpha = 0.4f;
     [SerializeField] private float _fadeDuration = 0.3f;
-    [Tooltip("Pick position from these.")] [SerializeField]
-    private List<Vector3> _fixedOffsets;
+    [Tooltip("Pick position from these.")]
+    [SerializeField] private List<Vector3> _fixedOffsets;
+    [SerializeField] private Transform _ghostParent;
 
     private Renderer _renderer;
     private Vector3 _originPosition;
@@ -155,6 +156,7 @@ public class DissolveTransition : MonoBehaviour, IQuantumTransition
 
     private GameObject BuildGhost(Vector3 worldPos, Quaternion rot, Vector3 scale)
     {
+        //Instantiate under transform.
         var ghost = new GameObject("QuantumGhost");
         var mf = ghost.AddComponent<MeshFilter>();
         var mr = ghost.AddComponent<MeshRenderer>();
