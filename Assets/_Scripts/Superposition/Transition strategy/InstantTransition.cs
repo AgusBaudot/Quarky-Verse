@@ -131,7 +131,6 @@ public class InstantTransition : MonoBehaviour, IQuantumTransition
 
     private GameObject BuildGhost(Vector3 worldPos, quaternion rot, Vector3 scale)
     {
-        //Replace for ghost parent scene clean
         var ghost = new GameObject("QuantumGhost");
         var mf = ghost.AddComponent<MeshFilter>();
         var mr = ghost.AddComponent<MeshRenderer>();
@@ -141,6 +140,9 @@ public class InstantTransition : MonoBehaviour, IQuantumTransition
         ghost.transform.rotation = rot;
         ghost.transform.localScale = scale;
         SetAlpha(mr, _ghostAlpha);
+        
+        ghost.transform.SetParent(_ghostParent, true);
+        
         return ghost;
     }
 
