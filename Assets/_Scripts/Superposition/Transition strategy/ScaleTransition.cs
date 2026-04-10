@@ -13,9 +13,10 @@ public class ScaleTransition : MonoBehaviour, IQuantumTransition
 {
     [SerializeField] private float _scaleDuration = 0.3f;
     [SerializeField] private float _ghostAlpha = 0.4f;
-    [Tooltip("Pick position from these.")] [SerializeField]
-    private List<Vector3> _fixedOffsets = new();
-
+    [Tooltip("Pick position from these.")]
+    [SerializeField] private List<Vector3> _fixedOffsets = new();
+    [SerializeField] private Transform _ghostParent;
+    
     private Renderer _renderer;
     private Vector3 _originPosition;
     
@@ -137,6 +138,7 @@ public class ScaleTransition : MonoBehaviour, IQuantumTransition
 
     private GameObject BuildGhost(Vector3 worldPos, Quaternion rot, Vector3 scale)
     {
+        //Replace with instantiate to spawn under transform
         var ghost = new GameObject("QuantumGhost");
         var mf = ghost.AddComponent<MeshFilter>();
         var mr = ghost.AddComponent<MeshRenderer>();
