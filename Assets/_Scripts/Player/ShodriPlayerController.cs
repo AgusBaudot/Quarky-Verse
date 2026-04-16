@@ -56,4 +56,5 @@ public class ShodriPlayerController : MonoBehaviour
         // Apply horizontal movement only (no gravity)
         _controller.Move(_currentMoveVelocity * Time.deltaTime);
     }
+    
 }
