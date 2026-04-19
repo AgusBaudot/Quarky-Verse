@@ -2,38 +2,34 @@
 
 public class PressureButton : MonoBehaviour
 {
-    [SerializeField] private MonoBehaviour _actionTarget;
+    [SerializeField] private Transform _pressPoint;
+    [SerializeField] private float _radius = 0.3f;
+    [SerializeField] private LayerMask _detectLayer;
+    private bool _isPressed;
+    [SerializeField] private Door _door;
 
-    private IInteractableAction _action;
-    private int _objectsOnTop = 0;
-
-    void Awake()
+    void Update()
     {
-        _action = _actionTarget as IInteractableAction;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (IsValid(other))
+        bool pressed = Physics.CheckSphere(_pressPoint.position, _radius, _detectLayer);
+        if (pressed && !_isPressed)
         {
-            _objectsOnTop++;
-            if (_objectsOnTop == 1) _action?.Activate();
+            _isPressed = true;
+            OnPressed();
+        }
+        else if (!pressed && _isPressed)
+        {
+            _isPressed = false;
+            OnReleased();
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnPressed()
     {
-        if (IsValid(other))
-        {
-            _objectsOnTop--;
-
-            if (_objectsOnTop <= 0)
-            { 
-                _objectsOnTop = 0;
-                _action?.Deactivate();
-            }
-        }
+        Debug.Log("Boton Activado");
+        _door.Open();
     }
-    private bool IsValid(Collider other)
+    private void OnReleased()
     {
-        return other.CompareTag("Player") || other.GetComponent<PickableObject>() != null;
+        Debug.Log("Boton Desactivado");
+        _door.Close();
     }
 }
