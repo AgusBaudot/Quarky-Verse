@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
 
     void Update()
     {
-        Vector3 target = _isOpen ? _openPosition : _closedPosition;
+        Vector3 target = _isOpen ? _openPosition.position : _closedPosition;
         transform.position = Vector3.Lerp(transform.position, target, _speed * Time.deltaTime);
     }
 
