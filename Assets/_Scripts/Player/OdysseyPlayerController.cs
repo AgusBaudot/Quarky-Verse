@@ -49,6 +49,7 @@ public class OdysseyPlayerController : MonoBehaviour
     [SerializeField] private float _holdDistance = 2f;
     [SerializeField] private Transform _cameraTransform2;
     private PickableObject _heldObject;
+    [SerializeField] private float _pushForce = 10f;
 
     void Start()
     {
@@ -59,6 +60,7 @@ public class OdysseyPlayerController : MonoBehaviour
     {
         HandleDash();
         HandleGrab();
+        HandlePush();
         // Suspend normal movement and _gravity while dashing
         if (!_isDashing)
         {
@@ -224,5 +226,23 @@ public class OdysseyPlayerController : MonoBehaviour
     {
         _heldObject.OnRelease();
         _heldObject = null;
+    }
+    private void HandlePush()
+    {
+        if (Input.GetKey(KeyCode.G)) //mantener apretado para empujar
+        {
+            Ray ray = new Ray(_cameraTransform2.position, _cameraTransform2.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit, 2f))
+            {
+                if (Vector3.Distance(transform.position, hit.point) > 2f) return;
+                PushableObject pushable = hit.collider.GetComponent<PushableObject>();
+                if (pushable != null)
+                {
+                    Vector3 pushDir = transform.forward;
+                    pushDir.y = 0f;
+                    pushable.Push(pushDir.normalized, _pushForce);
+                }
+            }
+        }
     }
 }
