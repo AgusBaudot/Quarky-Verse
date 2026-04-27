@@ -13,10 +13,6 @@ using UnityEngine;
 ///
 /// Delegates position picking and visual transitions to IQuantumTransition.
 /// </summary>
-
-//PROTOTYPE NOTE: canonicalState is captured from the transform at Awake.
-//In production, consider a serialized field so designers can place the object independently of its canonical position.
-
 [RequireComponent(typeof(IQuantumTransition))]
 public class SuperpositionController : MonoBehaviour
 {
@@ -26,9 +22,11 @@ public class SuperpositionController : MonoBehaviour
     public event Action OnQuantumActivated;
 
     public bool IsVisuallyQuantum => _isQuantumActive && !_isCollapsed;
+    public bool IsGhostOnly => _role is QuantumObjectRole.Decorative or QuantumObjectRole.SwitchActivated;
     
     [SerializeField] private float _interval = 2f;
     [SerializeField] private QuantumThreshold _minimumThreshold = QuantumThreshold.Small;
+    [SerializeField] private QuantumObjectRole _role = QuantumObjectRole.PuzzleObject;
 
     private SuperpositionState _currentState;
     
@@ -50,19 +48,21 @@ public class SuperpositionController : MonoBehaviour
 
     private void Start()
     {
-        QuantumRegistry.Instance.Register(this);
-        PlanckBar.Instance.OnThresholdChanged += HandlePlanckChanged;
+        if (_role == QuantumObjectRole.PuzzleObject)
+            QuantumRegistry.Instance.Register(this);
         
         //Evaluate immediately in case objects are spawned mid-session
         //with Planck level already below their threshold
         HandlePlanckChanged(PlanckBar.Instance.CurrentLevel);
-
+        PlanckBar.Instance.OnThresholdChanged += HandlePlanckChanged;
         StartCoroutine(SuperpositionLoop());
     }
 
     private void OnDestroy()
     {
-        QuantumRegistry.Instance?.Unregister(this);
+        if (_role == QuantumObjectRole.PuzzleObject)
+            QuantumRegistry.Instance?.Unregister(this);
+    
         if (PlanckBar.Instance != null)
             PlanckBar.Instance.OnThresholdChanged -= HandlePlanckChanged;
     }
@@ -128,5 +128,29 @@ public class SuperpositionController : MonoBehaviour
         transform.position = _currentState.pos;
         transform.rotation = _currentState.rot;
         transform.localScale =  _currentState.scale;
+    }
+
+    public void CollapseToPosition(Vector3 worldPosition)
+    {
+        if (_role != QuantumObjectRole.SwitchActivated)
+            return;
+
+        _role = QuantumObjectRole.PuzzleObject;
+        QuantumRegistry.Instance.Register(this);
+
+        _currentState = new SuperpositionState
+        {
+            pos = worldPosition,
+            rot = transform.rotation,
+            scale = transform.localScale
+        };
+        
+        _isCollapsed = true;
+        SnapToCurrent();
+        OnCollapse?.Invoke();
+        
+        var renderer = GetComponent<Renderer>();
+        if (!renderer.enabled)
+            renderer.enabled = true;
     }
 }

@@ -16,9 +16,11 @@ public class InstantTransition : MonoBehaviour, IQuantumTransition
     
     private Renderer _renderer;
     private Vector3 _originPosition;
+    private Vector3 _currentRealPosition;
     private SuperpositionController _controller;
-    private readonly List<Vector3> _fixedOffsets = new();
+    private bool _isGhostOnly;
     
+    private readonly List<Vector3> _fixedOffsets = new();
     //Shuffle bag: positions not yet visited this cycle
     private readonly List<Vector3> _remaining = new();
     //All ghost objects keyed by world position for O(1) lookup
@@ -28,13 +30,14 @@ public class InstantTransition : MonoBehaviour, IQuantumTransition
     {
         _originPosition = transform.position;
         _renderer = GetComponent<Renderer>();
+        _controller = GetComponent<SuperpositionController>();
+        _isGhostOnly = _controller.IsGhostOnly;
         
-        var controller = GetComponent<SuperpositionController>();
-        controller.OnCollapse += HandleCollapse;
-        controller.OnRestore += HandleRestore;
-        controller.OnQuantumDeactivated += HandleCollapse; //ghost hides either way
-        controller.OnQuantumActivated += HandleRestore; //ghost eligible to reappear
-
+        _controller.OnCollapse += HandleCollapse;
+        _controller.OnRestore += HandleRestore;
+        _controller.OnQuantumDeactivated += HandleCollapse; //ghost hides either way
+        _controller.OnQuantumActivated += HandleRestore; //ghost eligible to reappear
+        
         var observer = GetComponent<ObserverTrigger>();
         if (observer != null)
         {
@@ -54,8 +57,18 @@ public class InstantTransition : MonoBehaviour, IQuantumTransition
         {
             _ghosts[_originPosition + offset] = BuildGhost(_originPosition + offset, transform.rotation, transform.localScale);
         }
-        
-        _fixedOffsets.Add(Vector3.zero);
+
+        if (_isGhostOnly)
+        {
+            _renderer.enabled = false;
+            if(!_ghosts.ContainsKey(_originPosition))
+                _ghosts[_originPosition] = BuildGhost(_originPosition, transform.rotation, transform.localScale);
+        }
+        else
+        {
+            if(_ghosts.TryGetValue(_originPosition, out var originGhost))
+                originGhost.SetActive(false);
+        }
 
         RefillBag();
     }
@@ -104,6 +117,8 @@ public class InstantTransition : MonoBehaviour, IQuantumTransition
     public IEnumerator Execute(Transform target, SuperpositionState from, SuperpositionState to, Func<bool> isCancelled)
     {
         if (isCancelled()) yield break;
+
+        if (_isGhostOnly) yield break;
         
         //Show ghost where the real object is leaving from.
         if (!_ghosts.TryGetValue(from.pos, out var departureGhost))
