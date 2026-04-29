@@ -39,15 +39,15 @@ public class PlanckBar : MonoBehaviour
             return;
         }
         Instance = this;
+        
+        _slider.minValue = 0;
+        _slider.maxValue = 1;
+        _slider.value = 1; //World starts fully quantum
+        _currentLevel = ToThreshold(_slider.value);
     }
 
     private void Start()
     {
-        _slider.minValue = 0;
-        _slider.maxValue = 1;
-        _slider.value = 1; //World starts fully quantum
-        _slider.interactable = true; //PROTOTYPE ONLY - set false in production.
-        _currentLevel = ToThreshold(_slider.value);
         _slider.onValueChanged.AddListener(HandleSliderChanged);
     }
 
