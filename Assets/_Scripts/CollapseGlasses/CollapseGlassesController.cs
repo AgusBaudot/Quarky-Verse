@@ -83,7 +83,14 @@ public class CollapseGlassesController : MonoBehaviour
         Ray ray = new Ray(_firstPersonCamera.transform.position, _firstPersonCamera.transform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity)) //Should be distance, not radius
-            return hit.collider.GetComponent<SuperpositionController>();
+        {
+            var target = hit.collider.GetComponent<SuperpositionController>();
+
+            if (target != null && !target.IsGhostOnly)
+            {
+                return target;
+            }
+        }
 
         return null;
     }
