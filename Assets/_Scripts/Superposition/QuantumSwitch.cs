@@ -5,6 +5,9 @@ public class QuantumSwitch : MonoBehaviour
 {
     [Tooltip("The SwitchActivated quantum object this switch controls.")] [SerializeField]
     private SuperpositionController _target;
+
+    [Tooltip("Potential GameObject to spawn. If empty, put quantum object itself.")] [SerializeField]
+    private GameObject _consequence;
     [Tooltip("World position the object collapses to when the switch fires.")]
     [SerializeField] private Vector3 _targetWorldPosition;
     [SerializeField] private float _radius;
@@ -37,6 +40,12 @@ public class QuantumSwitch : MonoBehaviour
         
         _hasActivated = true;
         PlanckBar.Instance.SetValue(1f - _plankPercentage);
+        
+        if (_consequence != null)
+        {
+            _consequence.SetActive(true);
+            return;
+        }
         _target.CollapseToPosition(_targetWorldPosition);
     }
 
