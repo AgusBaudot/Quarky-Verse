@@ -53,7 +53,7 @@ public class PlanckBar : MonoBehaviour
 
     private void OnDestroy()
     {
-        _slider.onValueChanged.RemoveAllListeners();
+        _slider.onValueChanged.RemoveListener(HandleSliderChanged);
     }
     
     //Called by game events (level complete, puzzle solve) in production.

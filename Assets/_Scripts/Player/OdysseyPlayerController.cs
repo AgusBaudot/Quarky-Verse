@@ -33,12 +33,11 @@ public class OdysseyPlayerController : MonoBehaviour
     [SerializeField] private Transform _cameraTransform;
 
     private CharacterController _controller;
-    private Vector3 _velocity; // Vertical _velocity (_gravity/jumping)
-    private Vector3 _currentMoveVelocity; // Horizontal _velocity (momentum)
+    private Vector3 _velocity;
+    private Vector3 _currentMoveVelocity;
     private float _turnSmoothVelocity;
     private bool _isGrounded;
 
-    // Dash State
     private bool _isDashing;
     private float _dashStartTime;
     private float _lastDashTime = -100f;
@@ -53,7 +52,6 @@ public class OdysseyPlayerController : MonoBehaviour
     {
         HandleDash();
 
-        // Suspend normal movement and _gravity while dashing
         if (!_isDashing)
         {
             HandleGravityAndJump();
@@ -63,13 +61,11 @@ public class OdysseyPlayerController : MonoBehaviour
 
     private void HandleDash()
     {
-        // Check for dash input
         if (Input.GetKeyDown(_dashKey) && Time.time >= _lastDashTime + _dashCooldown && !_isDashing)
         {
             StartDash();
         }
 
-        // Process active dash
         if (_isDashing)
         {
             if (Time.time >= _dashStartTime + _dashDuration)
@@ -78,8 +74,7 @@ public class OdysseyPlayerController : MonoBehaviour
             }
             else
             {
-                // Move the _controller in the dash direction
-                _controller.Move(_dashDirection * _dashSpeed * Time.deltaTime);
+                _controller.Move(_dashDirection * (_dashSpeed * Time.deltaTime));
             }
         }
     }
@@ -89,27 +84,20 @@ public class OdysseyPlayerController : MonoBehaviour
         _isDashing = true;
         _dashStartTime = Time.time;
 
-        // Calculate input direction
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 inputDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
 
         if (inputDirection.magnitude >= 0.1f)
         {
-            // Dash towards camera-relative input direction
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
             _dashDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            // Snap the character's rotation to instantly face the dash direction
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
         }
         else
         {
-            // If no input is pressed, dash in the direction the character is currently facing
             _dashDirection = transform.forward;
         }
 
-        // Reset vertical _velocity so the dash is perfectly horizontal
         _velocity.y = 0f;
     }
 
@@ -118,7 +106,6 @@ public class OdysseyPlayerController : MonoBehaviour
         _isDashing = false;
         _lastDashTime = Time.time;
 
-        // Preserve momentum by setting current _velocity to top speed in the dash direction
         _currentMoveVelocity = _dashDirection * _topSpeed;
     }
 
@@ -130,26 +117,20 @@ public class OdysseyPlayerController : MonoBehaviour
 
         if (inputDirection.magnitude >= 0.1f)
         {
-            // Calculate direction relative to the camera
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
             
-            // Smoothly rotate character model
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            // Calculate actual movement direction
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             
-            // Accelerate
             _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, moveDirection * _topSpeed, _acceleration * Time.deltaTime);
         }
         else
         {
-            // Decelerate (slide to a stop instead of snapping)
             _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, Vector3.zero, _deceleration * Time.deltaTime);
         }
 
-        // Apply horizontal movement
         _controller.Move(_currentMoveVelocity * Time.deltaTime);
     }
 
@@ -159,7 +140,7 @@ public class OdysseyPlayerController : MonoBehaviour
 
         if (_isGrounded && _velocity.y < 0)
         {
-            _velocity.y = -2f; // Keep snapped to ground
+            _velocity.y = -2f;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
@@ -167,7 +148,6 @@ public class OdysseyPlayerController : MonoBehaviour
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
         }
 
-        // Apply Mario-style falling (_gravity gets stronger when falling down)
         float currentGravity = _gravity;
         if (_velocity.y < 0) 
         {
@@ -175,6 +155,6 @@ public class OdysseyPlayerController : MonoBehaviour
         }
 
         _velocity.y += currentGravity * Time.deltaTime;
-        _controller.Move(_velocity * Time.deltaTime); // Apply vertical movement
+        _controller.Move(_velocity * Time.deltaTime);
     }
 }

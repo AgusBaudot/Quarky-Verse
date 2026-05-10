@@ -54,6 +54,12 @@ public class QuantumSwitch : MonoBehaviour
         if (other.CompareTag("Player"))
             _isInRange = true;
     }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            _isInRange = false;
+    }
 
     private void OnDrawGizmosSelected()
     {

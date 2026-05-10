@@ -24,7 +24,7 @@ public class ObserverTrigger : MonoBehaviour
     SuperpositionController _controller;
     Vector3 _originPosition;
 
-    private HashSet<GameObject> _activeConsequences = new();
+    private GameObject _currentActiveConsequence;
 
     void Awake()
     {
@@ -48,7 +48,7 @@ public class ObserverTrigger : MonoBehaviour
     void HandleCollapse()
     {
         Vector3 collapsed = transform.position;
-        HashSet<GameObject> consequencesToActivate = new();
+        GameObject newConsequence = null;
 
         foreach (var obs in _observations)
         {
@@ -57,26 +57,24 @@ public class ObserverTrigger : MonoBehaviour
 
             if (Vector3.Distance(collapsed, _originPosition + obs.offset) < 0.01f)
             {
-                consequencesToActivate.Add(obs.consequence);
+                newConsequence = obs.consequence;
+                break;
             }
         }
 
-        foreach (var oldCon in _activeConsequences)
+        if (newConsequence == _currentActiveConsequence)
+            return;
+
+        if (_currentActiveConsequence != null)
         {
-            if (oldCon != null && !consequencesToActivate.Contains(oldCon))
-            {
-                oldCon.SetActive(false);
-            }
+            _currentActiveConsequence.SetActive(false);
         }
 
-        foreach (var newCon in consequencesToActivate)
+        if (newConsequence != null)
         {
-            if (newCon != null)
-            {
-                newCon.SetActive(true);
-            }
+            newConsequence.SetActive(true);
         }
-
-        _activeConsequences = consequencesToActivate;
+        
+        _currentActiveConsequence = newConsequence;
     }
 }

@@ -39,30 +39,24 @@ public class OdysseyThirdPersonCamera : MonoBehaviour
     void LateUpdate()
     {
         if (!_target) return;
-
-        // 1. Get Mouse Input
+        
         _currentYaw += Input.GetAxis("Mouse X") * _mouseSensitivityX;
         _currentPitch -= Input.GetAxis("Mouse Y") * _mouseSensitivityY;
         
-        // Clamp the pitch so we never stare at the sky or flip over
         _currentPitch = Mathf.Clamp(_currentPitch, _minPitch, _maxPitch);
 
-        // 2. Calculate the desired rotation and raw position
         Quaternion rotation = Quaternion.Euler(_currentPitch, _currentYaw, 0);
         Vector3 focusPoint = _target.position + _targetOffset;
         Vector3 desiredCameraPos = focusPoint - (rotation * Vector3.forward * _defaultDistance);
 
-        // 3. Camera Collision (Prevent clipping through walls)
         float currentDistance = _defaultDistance;
         if (Physics.SphereCast(focusPoint, 0.2f, (desiredCameraPos - focusPoint).normalized, out RaycastHit hit, _defaultDistance, _collisionMask))
         {
-            // If we hit a wall, pull the camera in closer
             currentDistance = Mathf.Clamp(hit.distance - 0.1f, _minDistance, _defaultDistance);
         }
 
-        // 4. Apply Final Position & Rotation Smoothly
-        Vector3 finalPosition = focusPoint - (rotation * Vector3.forward * currentDistance);
-        transform.position = Vector3.Lerp(transform.position, finalPosition, _smoothSpeed * Time.deltaTime);
+        Vector3 finalPosition = focusPoint - rotation * Vector3.forward * currentDistance;
+        transform.position = Vector3.SmoothDamp(transform.position, finalPosition, ref _currentVelocity, 1f / _smoothSpeed);
         transform.LookAt(focusPoint);
     }
 

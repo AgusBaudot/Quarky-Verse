@@ -33,18 +33,7 @@ public class CharacterSwapManager : MonoBehaviour
     {
         if (playAsShodri)
         {
-            // SWAPPING TO SHODRI
-            
-            // Disable Shodri's CharacterController briefly to allow direct transform manipulation
-            CharacterController shodriCC = _shodriCharacter.GetComponent<CharacterController>();
-            if (shodriCC) shodriCC.enabled = false;
-
-            // Snap Shodri to the Main Player's exact position and rotation
-            _shodriCharacter.transform.position = _mainCharacter.transform.position;
-            _shodriCharacter.transform.rotation = _mainCharacter.transform.rotation;
-
-            // Re-enable the CharacterController
-            if (shodriCC) shodriCC.enabled = true;
+            _shodriCharacter.Teleport(_mainCharacter.transform.position, _mainCharacter.transform.rotation);
 
             // Swap GameObjects
             _mainCharacter.enabled = false;
@@ -55,8 +44,6 @@ public class CharacterSwapManager : MonoBehaviour
         }
         else
         {
-            // SWAPPING TO MAIN PLAYER
-            
             // Swap GameObjects (Main player naturally wakes up exactly where they were left)
             _shodriCharacter.gameObject.SetActive(false);
             _mainCharacter.enabled = true;
