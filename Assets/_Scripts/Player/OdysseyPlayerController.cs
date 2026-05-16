@@ -43,6 +43,13 @@ public class OdysseyPlayerController : MonoBehaviour
     private float _lastDashTime = -100f;
     private Vector3 _dashDirection;
 
+    [Header("Grab System")]
+    [SerializeField] private float _grabDistance = 5f;
+    [SerializeField] private float _holdDistance = 2f;
+    [SerializeField] private Transform _cameraTransform2;
+    private PickableObject _heldObject;
+    [SerializeField] private float _pushForce = 10f;
+
     void Start()
     {
         _controller = GetComponent<CharacterController>();
@@ -51,7 +58,10 @@ public class OdysseyPlayerController : MonoBehaviour
     void Update()
     {
         HandleDash();
-
+        HandleGrab();
+        HandlePush();
+        
+        // Suspend normal movement and _gravity while dashing
         if (!_isDashing)
         {
             HandleGravityAndJump();
@@ -156,5 +166,65 @@ public class OdysseyPlayerController : MonoBehaviour
 
         _velocity.y += currentGravity * Time.deltaTime;
         _controller.Move(_velocity * Time.deltaTime);
+    }
+    // Pickup objects and release logic would go here.
+    private void HandleGrab()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (_heldObject == null) TryGrab();
+            else Release();
+        }
+        if (_heldObject != null) HoldObject();
+    }
+    private void TryGrab()
+    {
+        Ray ray = new Ray(_cameraTransform2.position, _cameraTransform2.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, _grabDistance))
+        {
+            PickableObject pickable = hit.collider.GetComponent<PickableObject>();
+            if (pickable != null)
+            {
+                _heldObject = pickable;
+                _heldObject.OnGrab();
+            }
+        }
+    }
+    private void HoldObject()
+    {
+        Vector3 targetPosition = _cameraTransform2.position + _cameraTransform2.forward * _holdDistance;
+        _heldObject.transform.position = Vector3.Lerp(
+            _heldObject.transform.position,
+            targetPosition,
+            Time.deltaTime * 15f
+        );
+        _heldObject.transform.rotation = Quaternion.Lerp(
+            _heldObject.transform.rotation,
+            Quaternion.LookRotation(_cameraTransform2.forward),
+            Time.deltaTime * 15f
+        );
+    }
+    private void Release()
+    {
+        _heldObject.OnRelease();
+        _heldObject = null;
+    }
+    private void HandlePush()
+    {
+        if (Input.GetKey(KeyCode.G)) //mantener apretado para empujar
+        {
+            Ray ray = new Ray(_cameraTransform2.position, _cameraTransform2.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit, 2f))
+            {
+                if (Vector3.Distance(transform.position, hit.point) > 2f) return;
+                PushableObject pushable = hit.collider.GetComponent<PushableObject>();
+                if (pushable != null)
+                {
+                    Vector3 pushDir = transform.forward;
+                    pushDir.y = 0f;
+                    pushable.Push(pushDir.normalized, _pushForce);
+                }
+            }
+        }
     }
 }

@@ -61,4 +61,5 @@ public class ShodriPlayerController : MonoBehaviour
 
         _controller.Move(_currentMoveVelocity * Time.deltaTime);
     }
+    
 }
