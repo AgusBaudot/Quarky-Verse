@@ -50,6 +50,7 @@ public class OdysseyPlayerController : MonoBehaviour
     [SerializeField] private Transform _cameraTransform2;
     private PickableObject _heldObject;
     [SerializeField] private float _pushForce = 10f;
+    private PushableObject _currentPushable;
 
     void Start()
     {
@@ -60,12 +61,16 @@ public class OdysseyPlayerController : MonoBehaviour
     {
         HandleDash();
         HandleGrab();
-        HandlePush();
         // Suspend normal movement and _gravity while dashing
         if (!_isDashing)
         {
             HandleGravityAndJump();
             HandleMovement();
+        }
+        if (_currentPushable != null)
+        {
+            Vector3 horizontalMove = new Vector3(_currentMoveVelocity.x, 0f, _currentMoveVelocity.z);
+            if (horizontalMove.magnitude < 0.1f) _currentPushable.StopPush();
         }
     }
 
@@ -227,22 +232,29 @@ public class OdysseyPlayerController : MonoBehaviour
         _heldObject.OnRelease();
         _heldObject = null;
     }
-    private void HandlePush()
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (Input.GetKey(KeyCode.G)) //mantener apretado para empujar
+        PushableObject pushable = hit.collider.GetComponent<PushableObject>();
+
+        if (pushable == null)
         {
-            Ray ray = new Ray(_cameraTransform2.position, _cameraTransform2.forward);
-            if (Physics.Raycast(ray, out RaycastHit hit, 2f))
-            {
-                if (Vector3.Distance(transform.position, hit.point) > 2f) return;
-                PushableObject pushable = hit.collider.GetComponent<PushableObject>();
-                if (pushable != null)
-                {
-                    Vector3 pushDir = transform.forward;
-                    pushDir.y = 0f;
-                    pushable.Push(pushDir.normalized, _pushForce);
-                }
-            }
+            _currentPushable = null;
+            return;
         }
+        Vector3 horizontalMove = new Vector3(_currentMoveVelocity.x, 0f, _currentMoveVelocity.z);
+        // El jugador debe estar moviéndose
+        if (horizontalMove.magnitude < 0.1f)
+        {
+            pushable.StopPush();
+            return;
+        }
+        // Verificar que empuja desde el frente
+        float dot = Vector3.Dot(transform.forward, -hit.normal);
+        if (dot > 0.5f)
+        {
+            pushable.Push(transform.forward);
+            _currentPushable = pushable;
+        }
+        else pushable.StopPush();
     }
 }

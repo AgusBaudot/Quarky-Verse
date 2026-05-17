@@ -9,12 +9,8 @@ public class Highlightable : MonoBehaviour, IHighlightable
 
     void Awake() 
     {
-        if (_renderer == null) 
-        {
-            _renderer = GetComponent<Renderer>();
-            _originalColor = _renderer.material.GetColor("_BaseColor");
-
-        }
+        if (_renderer == null) _renderer = GetComponent<Renderer>();
+        _originalColor = _renderer.material.GetColor("_BaseColor");
     }
 
     public void SetHighlight(bool active)
