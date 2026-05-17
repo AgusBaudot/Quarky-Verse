@@ -139,8 +139,7 @@ GameObject:
   - component: {fileID: 22882118}
   - component: {fileID: 22882126}
   - component: {fileID: 22882127}
-  - component: {fileID: 22882128}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Scale transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,10 +274,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _observations:
   - offset: {x: 2, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
+    consequence: {fileID: 0}
+  - offset: {x: -2, y: 0, z: 0}
     consequence: {fileID: 0}
   - offset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 0}
 --- !u!114 &22882127
 MonoBehaviour:
@@ -294,18 +293,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ghostAlpha: 0.4
   _ghostParent: {fileID: 820753289}
---- !u!114 &22882128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22882117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b9151aa7ed4a88a6996583628dfead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &178560782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,8 +1264,7 @@ GameObject:
   - component: {fileID: 683513715}
   - component: {fileID: 683513718}
   - component: {fileID: 683513719}
-  - component: {fileID: 683513720}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Instant transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1412,16 +1398,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _observations:
   - offset: {x: 2, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 1647058692}
   - offset: {x: -2, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 1863964544}
   - offset: {x: 0, y: 2, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 1599817450}
   - offset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 1599817450}
 --- !u!114 &683513719
 MonoBehaviour:
@@ -1437,18 +1419,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ghostAlpha: 0.4
   _ghostParent: {fileID: 820753289}
---- !u!114 &683513720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683513710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b9151aa7ed4a88a6996583628dfead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,10 +2818,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _cameraTransform: {fileID: 963194228}
-  _grabDistance: 5
-  _holdDistance: 2
-  _cameraTransform2: {fileID: 0}
-  _pushForce: 10
 --- !u!114 &1135626991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3939,8 +3905,7 @@ GameObject:
   - component: {fileID: 1725143317}
   - component: {fileID: 1725143324}
   - component: {fileID: 1725143325}
-  - component: {fileID: 1725143326}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Dissolve transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4075,13 +4040,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _observations:
   - offset: {x: 2, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 0}
   - offset: {x: -2, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 0}
   - offset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 0}
 --- !u!114 &1725143325
 MonoBehaviour:
@@ -4097,18 +4059,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ghostAlpha: 0.4
   _ghostParent: {fileID: 820753289}
---- !u!114 &1725143326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725143316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b9151aa7ed4a88a6996583628dfead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1806303064
 GameObject:
   m_ObjectHideFlags: 0
@@ -4488,13 +4438,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _observations:
   - offset: {x: 10, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 0}
   - offset: {x: -10, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 0}
   - offset: {x: 0, y: 10, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 0}
 --- !u!114 &1976073672
 MonoBehaviour:

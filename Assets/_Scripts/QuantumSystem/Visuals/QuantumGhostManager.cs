@@ -15,6 +15,8 @@ public class QuantumGhostManager : MonoBehaviour
     private SuperpositionController _controller;
     private MaterialPropertyBlock _mpb;
 
+    private static int _groundLayer = -1;
+
     // Uses a custom comparer to prevent floating-point precision misses
     private readonly Dictionary<Vector3, GameObject> _ghosts = new(new Vector3EpsilonComparer());
 
@@ -100,6 +102,20 @@ public class QuantumGhostManager : MonoBehaviour
         else
             ghost.transform.SetParent(transform.parent, true);
         
+        ghost.AddComponent<BoxCollider>();
+        
+        var trigger = ghost.AddComponent<BoxCollider>();
+        trigger.isTrigger = true;
+        trigger.size *= 1.2f;
+        
+        var rb = ghost.AddComponent<Rigidbody>();
+        rb.isKinematic = true;
+
+        var contactLogic = ghost.AddComponent<QuantumContactCollapse>();
+        contactLogic.Init(_controller);
+        
+        ghost.layer = _groundLayer;
+        
         return ghost;
     }
 
@@ -131,6 +147,12 @@ public class QuantumGhostManager : MonoBehaviour
             _renderer = GetComponent<Renderer>();
             _mpb = new MaterialPropertyBlock();
         }
+        
+        if (_controller == null)
+            _controller = GetComponent<SuperpositionController>();
+        
+        if (_groundLayer == -1)
+            _groundLayer = LayerMask.NameToLayer("Ground");
     }
 }
 
