@@ -215,17 +215,21 @@ public class OdysseyPlayerController : MonoBehaviour
     }
     private void HoldObject()
     {
-        Vector3 targetPosition = _cameraTransform2.position + _cameraTransform2.forward * _holdDistance;
-        _heldObject.transform.position = Vector3.Lerp(
-            _heldObject.transform.position,
-            targetPosition,
-            Time.deltaTime * 15f
-        );
-        _heldObject.transform.rotation = Quaternion.Lerp(
-            _heldObject.transform.rotation,
-            Quaternion.LookRotation(_cameraTransform2.forward),
-            Time.deltaTime * 15f
-        );
+        Vector3 holdTarget = _cameraTransform2.position + _cameraTransform2.forward * _holdDistance;
+        Vector3 direction = holdTarget - _heldObject.transform.position;
+        // Detectar paredes entre objeto y target
+        if (Physics.Raycast(_heldObject.transform.position,direction.normalized,out RaycastHit hit,direction.magnitude))
+        {
+            if (hit.collider.gameObject != _heldObject.gameObject) holdTarget = hit.point - direction.normalized * 0.3f;
+        }
+        float distanceToTarget =Vector3.Distance(_heldObject.transform.position,holdTarget);
+        if (distanceToTarget > 0.05f)
+        {
+            Vector3 newPosition = Vector3.Lerp(_heldObject.transform.position,holdTarget,Time.deltaTime * 15f);
+            _heldObject.Rigidbody.MovePosition(newPosition);
+        }
+        Quaternion targetRotation =Quaternion.LookRotation(_cameraTransform2.forward);
+        _heldObject.Rigidbody.MoveRotation(Quaternion.Lerp(_heldObject.transform.rotation,targetRotation,Time.deltaTime * 15f));
     }
     private void Release()
     {

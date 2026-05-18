@@ -3,6 +3,7 @@ using UnityEngine;
 public class PickableObject : MonoBehaviour, IInteractable
 {
     private Rigidbody _rb;
+    public Rigidbody Rigidbody => _rb;
     [Header("Visual Feedback")]
     [SerializeField] private Renderer _renderer;
 
@@ -18,14 +19,12 @@ public class PickableObject : MonoBehaviour, IInteractable
             _rb.useGravity = false;
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
-            _rb.isKinematic = true;
         }
     }
 
     public void OnRelease()
     {
         if (_rb != null) _rb.useGravity = true;
-        _rb.isKinematic = false;
     }
     // INTERACTION SYSTEM
     // =========================
