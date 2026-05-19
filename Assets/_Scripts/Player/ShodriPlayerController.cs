@@ -26,34 +26,39 @@ public class ShodriPlayerController : MonoBehaviour
         HandleMovement();
     }
 
+    public void Teleport(Vector3 pos, Quaternion rot)
+    {
+        if (_controller)
+            _controller.enabled = false;
+
+        transform.position = pos;
+        transform.rotation = rot;
+
+        if (_controller)
+            _controller.enabled = true;
+    }
+
     private void HandleMovement()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal"); // A/D
-        float vertical = Input.GetAxisRaw("Vertical");     // W/S
-        Vector3 inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 inputDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
 
         if (inputDirection.magnitude >= 0.1f)
         {
             // Calculate direction relative to the camera
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
             
-            // Smoothly rotate character model
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            // Calculate actual movement direction
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             
-            // Accelerate
             _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, moveDirection * _topSpeed, _acceleration * Time.deltaTime);
         }
         else
         {
-            // Decelerate
             _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, Vector3.zero, _deceleration * Time.deltaTime);
         }
 
-        // Apply horizontal movement only (no gravity)
         _controller.Move(_currentMoveVelocity * Time.deltaTime);
     }
     

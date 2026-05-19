@@ -25,15 +25,23 @@ public class CollapseGlassesController : MonoBehaviour
     [SerializeField] private Camera _thirdPersonCamera;
     [SerializeField] private Camera _firstPersonCamera;
     [SerializeField] private Slider _timerUI;
+    
     private IHighlightable _currentHighlight;
+    private SuperpositionController _currentTarget;
+    
     private bool _isActive;
     private readonly List<SuperpositionController> _collapsedObjects = new();
 
     private void Update()
     {
-        if (!_isActive && Input.GetKeyDown(KeyCode.E)) StartCoroutine(ActivateGlasses());
-        if (_isActive) 
+        if (!_isActive && Input.GetKeyDown(KeyCode.E))
         {
+            StartCoroutine(ActivateGlasses());
+        }
+        
+        if (_isActive)
+        {
+            UpdateTarget();
             HandleHighlight();
             TryCollapseTarget();
         }
@@ -50,16 +58,17 @@ public class CollapseGlassesController : MonoBehaviour
         _firstPersonCamera.enabled = true;
         
         _collapsedObjects.Clear();
-        SuperpositionController target = GetTarget();
 
         float elapsed = 0f;
-        if (_timerUI) _timerUI.gameObject.SetActive(true);
+        if (_timerUI != null)
+            _timerUI.gameObject.SetActive(true);
 
         while (elapsed < _duration)
         {
             elapsed += Time.deltaTime;
-            HandleHighlight();
-            if (_timerUI) _timerUI.value = 1f - elapsed / _duration;
+            if (_timerUI != null)
+                _timerUI.value = 1f - elapsed / _duration;
+            
             yield return null;
         }
         
@@ -69,8 +78,11 @@ public class CollapseGlassesController : MonoBehaviour
         _firstPersonCamera.enabled = false;
         _thirdPersonCamera.enabled = true;
         
-        if (_timerUI) _timerUI.gameObject.SetActive(false);
+        if (_timerUI != null)
+            _timerUI.gameObject.SetActive(false);
+        
         _isActive = false;
+        
         if (_currentHighlight != null) 
         {
             _currentHighlight.SetHighlight(false);
@@ -78,39 +90,36 @@ public class CollapseGlassesController : MonoBehaviour
         }
     }
 
-    private SuperpositionController GetTarget() 
+    private void UpdateTarget()
     {
         Ray ray = new Ray(_firstPersonCamera.transform.position, _firstPersonCamera.transform.forward);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity)) //Should be distance, not radius
+        if (Physics.Raycast(ray, out RaycastHit hit, _radius))
         {
-            var target = hit.collider.GetComponent<SuperpositionController>();
-
-            if (target != null && !target.IsGhostOnly)
+            if (hit.collider.TryGetComponent(out SuperpositionController target))
             {
-                return target;
+                if (!target.IsGhostOnly)
+                {
+                    _currentTarget = target;
+                    return;
+                }
             }
         }
-
-        return null;
+        
+        _currentTarget = null;
     }
 
     private void HandleHighlight() 
     {
-        SuperpositionController target = GetTarget();
         IHighlightable newHighlight = null;
 
-        if (target != null)
-            newHighlight = target.GetComponent<IHighlightable>();
+        if (_currentTarget != null)
+            newHighlight = _currentTarget.GetComponent<IHighlightable>();
 
-        // Si es el mismo, no hacer nada
         if (newHighlight == _currentHighlight)
             return;
 
-        // Apagar anterior
         _currentHighlight?.SetHighlight(false);
-
-        // Encender nuevo
         newHighlight?.SetHighlight(true);
 
         _currentHighlight = newHighlight;
@@ -118,15 +127,13 @@ public class CollapseGlassesController : MonoBehaviour
 
     private void TryCollapseTarget() 
     {
-        SuperpositionController target = GetTarget();
-        
-        //If you sometimes use {} with one-liners, you must always use them. Maintain code coherent.
-        if (target == null)
+        if (_currentTarget == null)
             return;
 
-        target.Collapse();
-        
-        if (!_collapsedObjects.Contains(target))
-            _collapsedObjects.Add(target);
+        if (!_collapsedObjects.Contains(_currentTarget))
+        {
+            _currentTarget.Collapse();
+            _collapsedObjects.Add(_currentTarget);
+        }
     }
 }

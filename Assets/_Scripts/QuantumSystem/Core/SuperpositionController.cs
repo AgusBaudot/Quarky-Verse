@@ -36,9 +36,14 @@ public class SuperpositionController : MonoBehaviour
 
     private IQuantumTransition _transition;
 
+    private WaitForSeconds _wait;
+    private Func<bool> _cancelCondition;
+
     private void Awake()
     {
         _transition = GetComponent<IQuantumTransition>();
+        _wait = new WaitForSeconds(_interval);
+        _cancelCondition = () => _isCollapsed || !_isQuantumActive || _isPermanentlyResolved;
         _currentState = new SuperpositionState
         {
             pos = transform.position,
@@ -49,9 +54,6 @@ public class SuperpositionController : MonoBehaviour
 
     private void Start()
     {
-        if (_role == QuantumObjectRole.PuzzleObject)
-            QuantumRegistry.Instance.Register(this);
-        
         //Evaluate immediately in case objects are spawned mid-session
         //with Planck level already below their threshold
         HandlePlanckChanged(PlanckBar.Instance.CurrentLevel);
@@ -61,9 +63,6 @@ public class SuperpositionController : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_role == QuantumObjectRole.PuzzleObject)
-            QuantumRegistry.Instance?.Unregister(this);
-    
         if (PlanckBar.Instance != null)
             PlanckBar.Instance.OnThresholdChanged -= HandlePlanckChanged;
     }
@@ -75,7 +74,7 @@ public class SuperpositionController : MonoBehaviour
         
         while (gameObject.activeInHierarchy)
         {
-            yield return new WaitForSeconds(_interval); //Can reduce allocation with GetWait dictionary in static script.
+            yield return _wait; //Cache in awake to avoid Memory Allocation
             if (_isCollapsed || !_isQuantumActive || _isPermanentlyResolved) 
                 continue;
 
@@ -83,8 +82,7 @@ public class SuperpositionController : MonoBehaviour
             
             //isCanceled is checked by the transition each frame before writing to the transform.
             yield return StartCoroutine(
-                _transition.Execute(transform, _currentState, next,
-                    () => _isCollapsed || !_isQuantumActive || _isPermanentlyResolved)
+                _transition.Execute(transform, _currentState, next, _cancelCondition)
             );
             
             //Only advance state if the transition commpleted cleanly.

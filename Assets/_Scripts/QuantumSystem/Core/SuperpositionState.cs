@@ -6,7 +6,6 @@ using UnityEngine;
 /// state and the apparent (superposed) state across all quantum scripts.
 /// Serializable so it shows in inspector.
 /// </summary>
-
 [System.Serializable]
 public struct SuperpositionState
 {

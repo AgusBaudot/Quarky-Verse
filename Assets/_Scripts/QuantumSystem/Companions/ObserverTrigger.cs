@@ -19,19 +19,16 @@ public class ObserverTrigger : MonoBehaviour
 {
     [SerializeField] private List<QuantumObservation> _observations = new();
 
-
     public IReadOnlyList<QuantumObservation> Observations => _observations;
 
     SuperpositionController _controller;
-    Quaternion _originRotation;
     Vector3 _originPosition;
 
-    private HashSet<GameObject> _activeConsequences = new();
+    private GameObject _currentActiveConsequence;
 
     void Awake()
     {
         _originPosition = transform.position;
-        _originRotation = transform.rotation;
         _controller = GetComponent<SuperpositionController>();
     }
 
@@ -50,47 +47,34 @@ public class ObserverTrigger : MonoBehaviour
     // Find the matching observation and activate only its consequence.
     void HandleCollapse()
     {
-        Vector3 collapsed = transform.position; // <--- Aquí se llama "collapsed"
-        Quaternion collapsedRot = transform.rotation;
-        HashSet<GameObject> consequencesToActivate = new();
+        Vector3 collapsed = transform.position;
+        GameObject newConsequence = null;
 
         foreach (var obs in _observations)
         {
             if (obs.consequence == null)
                 continue;
 
-            // Calculamos cuál debería ser la posición y rotación exactas para esta observación
-            Vector3 targetPosition = _originPosition + obs.offset;
-            Quaternion targetRotation = _originRotation * Quaternion.Euler(obs.rotationOffset);
-
-            // Verificamos si coincide la posición usando "collapsed"
-            bool positionMatches = Vector3.Distance(collapsed, targetPosition) < 0.01f;
-
-            // Verificamos si coincide la rotación 
-            bool rotationMatches = Quaternion.Angle(collapsedRot, targetRotation) < 1.0f;
-
-            if (positionMatches && rotationMatches)
+            if (Vector3.Distance(collapsed, _originPosition + obs.offset) < 0.01f)
             {
-                consequencesToActivate.Add(obs.consequence);
+                newConsequence = obs.consequence;
+                break;
             }
         }
 
-        foreach (var oldCon in _activeConsequences)
+        if (newConsequence == _currentActiveConsequence)
+            return;
+
+        if (_currentActiveConsequence != null)
         {
-            if (oldCon != null && !consequencesToActivate.Contains(oldCon))
-            {
-                oldCon.SetActive(false);
-            }
+            _currentActiveConsequence.SetActive(false);
         }
 
-        foreach (var newCon in consequencesToActivate)
+        if (newConsequence != null)
         {
-            if (newCon != null)
-            {
-                newCon.SetActive(true);
-            }
+            newConsequence.SetActive(true);
         }
-
-        _activeConsequences = consequencesToActivate;
+        
+        _currentActiveConsequence = newConsequence;
     }
 }
