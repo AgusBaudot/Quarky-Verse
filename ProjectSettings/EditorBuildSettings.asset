@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/CentralHUB.unity
     guid: 532a8419c2632f249aa524d9bd9a1db9
   - enabled: 1
-    path: Assets/Scenes/GameDesignScene.unity
+    path: Assets/Scenes/Game Design Scenes/GameDesignScene.unity
     guid: e180cdb36d76dc94199f0a6bff037a10
   m_configObjects: {}
