@@ -33,11 +33,12 @@ public class OdysseyPlayerController : MonoBehaviour
     [SerializeField] private Transform _cameraTransform;
 
     private CharacterController _controller;
-    private Vector3 _velocity;
-    private Vector3 _currentMoveVelocity;
+    private Vector3 _velocity; // Vertical _velocity (_gravity/jumping)
+    private Vector3 _currentMoveVelocity; // Horizontal _velocity (momentum)
     private float _turnSmoothVelocity;
     private bool _isGrounded;
 
+    // Dash State
     private bool _isDashing;
     private float _dashStartTime;
     private float _lastDashTime = -100f;
@@ -49,6 +50,7 @@ public class OdysseyPlayerController : MonoBehaviour
     [SerializeField] private Transform _cameraTransform2;
     private PickableObject _heldObject;
     [SerializeField] private float _pushForce = 10f;
+    private PushableObject _currentPushable;
 
     void Start()
     {
@@ -59,23 +61,28 @@ public class OdysseyPlayerController : MonoBehaviour
     {
         HandleDash();
         HandleGrab();
-        HandlePush();
-        
         // Suspend normal movement and _gravity while dashing
         if (!_isDashing)
         {
             HandleGravityAndJump();
             HandleMovement();
         }
+        if (_currentPushable != null)
+        {
+            Vector3 horizontalMove = new Vector3(_currentMoveVelocity.x, 0f, _currentMoveVelocity.z);
+            if (horizontalMove.magnitude < 0.1f) _currentPushable.StopPush();
+        }
     }
 
     private void HandleDash()
     {
+        // Check for dash input
         if (Input.GetKeyDown(_dashKey) && Time.time >= _lastDashTime + _dashCooldown && !_isDashing)
         {
             StartDash();
         }
 
+        // Process active dash
         if (_isDashing)
         {
             if (Time.time >= _dashStartTime + _dashDuration)
@@ -84,7 +91,8 @@ public class OdysseyPlayerController : MonoBehaviour
             }
             else
             {
-                _controller.Move(_dashDirection * (_dashSpeed * Time.deltaTime));
+                // Move the _controller in the dash direction
+                _controller.Move(_dashDirection * _dashSpeed * Time.deltaTime);
             }
         }
     }
@@ -94,20 +102,27 @@ public class OdysseyPlayerController : MonoBehaviour
         _isDashing = true;
         _dashStartTime = Time.time;
 
-        Vector3 inputDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+        // Calculate input direction
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (inputDirection.magnitude >= 0.1f)
         {
+            // Dash towards camera-relative input direction
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
             _dashDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
+            // Snap the character's rotation to instantly face the dash direction
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
         }
         else
         {
+            // If no input is pressed, dash in the direction the character is currently facing
             _dashDirection = transform.forward;
         }
 
+        // Reset vertical _velocity so the dash is perfectly horizontal
         _velocity.y = 0f;
     }
 
@@ -116,6 +131,7 @@ public class OdysseyPlayerController : MonoBehaviour
         _isDashing = false;
         _lastDashTime = Time.time;
 
+        // Preserve momentum by setting current _velocity to top speed in the dash direction
         _currentMoveVelocity = _dashDirection * _topSpeed;
     }
 
@@ -127,20 +143,26 @@ public class OdysseyPlayerController : MonoBehaviour
 
         if (inputDirection.magnitude >= 0.1f)
         {
+            // Calculate direction relative to the camera
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
             
+            // Smoothly rotate character model
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
+            // Calculate actual movement direction
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             
+            // Accelerate
             _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, moveDirection * _topSpeed, _acceleration * Time.deltaTime);
         }
         else
         {
+            // Decelerate (slide to a stop instead of snapping)
             _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, Vector3.zero, _deceleration * Time.deltaTime);
         }
 
+        // Apply horizontal movement
         _controller.Move(_currentMoveVelocity * Time.deltaTime);
     }
 
@@ -150,7 +172,7 @@ public class OdysseyPlayerController : MonoBehaviour
 
         if (_isGrounded && _velocity.y < 0)
         {
-            _velocity.y = -2f;
+            _velocity.y = -2f; // Keep snapped to ground
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
@@ -158,6 +180,7 @@ public class OdysseyPlayerController : MonoBehaviour
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
         }
 
+        // Apply Mario-style falling (_gravity gets stronger when falling down)
         float currentGravity = _gravity;
         if (_velocity.y < 0) 
         {
@@ -165,7 +188,7 @@ public class OdysseyPlayerController : MonoBehaviour
         }
 
         _velocity.y += currentGravity * Time.deltaTime;
-        _controller.Move(_velocity * Time.deltaTime);
+        _controller.Move(_velocity * Time.deltaTime); // Apply vertical movement
     }
     // Pickup objects and release logic would go here.
     private void HandleGrab()
@@ -192,39 +215,50 @@ public class OdysseyPlayerController : MonoBehaviour
     }
     private void HoldObject()
     {
-        Vector3 targetPosition = _cameraTransform2.position + _cameraTransform2.forward * _holdDistance;
-        _heldObject.transform.position = Vector3.Lerp(
-            _heldObject.transform.position,
-            targetPosition,
-            Time.deltaTime * 15f
-        );
-        _heldObject.transform.rotation = Quaternion.Lerp(
-            _heldObject.transform.rotation,
-            Quaternion.LookRotation(_cameraTransform2.forward),
-            Time.deltaTime * 15f
-        );
+        Vector3 holdTarget = _cameraTransform2.position + _cameraTransform2.forward * _holdDistance;
+        Vector3 direction = holdTarget - _heldObject.transform.position;
+        // Detectar paredes entre objeto y target
+        if (Physics.Raycast(_heldObject.transform.position,direction.normalized,out RaycastHit hit,direction.magnitude))
+        {
+            if (hit.collider.gameObject != _heldObject.gameObject) holdTarget = hit.point - direction.normalized * 0.3f;
+        }
+        float distanceToTarget =Vector3.Distance(_heldObject.transform.position,holdTarget);
+        if (distanceToTarget > 0.05f)
+        {
+            Vector3 newPosition = Vector3.Lerp(_heldObject.transform.position,holdTarget,Time.deltaTime * 15f);
+            _heldObject.Rigidbody.MovePosition(newPosition);
+        }
+        Quaternion targetRotation =Quaternion.LookRotation(_cameraTransform2.forward);
+        _heldObject.Rigidbody.MoveRotation(Quaternion.Lerp(_heldObject.transform.rotation,targetRotation,Time.deltaTime * 15f));
     }
     private void Release()
     {
         _heldObject.OnRelease();
         _heldObject = null;
     }
-    private void HandlePush()
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (Input.GetKey(KeyCode.G)) //mantener apretado para empujar
+        PushableObject pushable = hit.collider.GetComponent<PushableObject>();
+
+        if (pushable == null)
         {
-            Ray ray = new Ray(_cameraTransform2.position, _cameraTransform2.forward);
-            if (Physics.Raycast(ray, out RaycastHit hit, 2f))
-            {
-                if (Vector3.Distance(transform.position, hit.point) > 2f) return;
-                PushableObject pushable = hit.collider.GetComponent<PushableObject>();
-                if (pushable != null)
-                {
-                    Vector3 pushDir = transform.forward;
-                    pushDir.y = 0f;
-                    pushable.Push(pushDir.normalized, _pushForce);
-                }
-            }
+            _currentPushable = null;
+            return;
         }
+        Vector3 horizontalMove = new Vector3(_currentMoveVelocity.x, 0f, _currentMoveVelocity.z);
+        // El jugador debe estar moviéndose
+        if (horizontalMove.magnitude < 0.1f)
+        {
+            pushable.StopPush();
+            return;
+        }
+        // Verificar que empuja desde el frente
+        float dot = Vector3.Dot(transform.forward, -hit.normal);
+        if (dot > 0.5f)
+        {
+            pushable.Push(transform.forward);
+            _currentPushable = pushable;
+        }
+        else pushable.StopPush();
     }
 }
