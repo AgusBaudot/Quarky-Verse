@@ -7,7 +7,7 @@ public class PressureButton : MonoBehaviour
     [SerializeField] private LayerMask _detectLayer;
     private bool _isPressed;
     [SerializeField] private float _requiredMass = 5f;
-    [SerializeField] private Door _door;
+    [SerializeField] private DoorInteractable _door;
 
     [SerializeField] private Transform _visual;
     [SerializeField] private float _pressedY = -0.1f;
