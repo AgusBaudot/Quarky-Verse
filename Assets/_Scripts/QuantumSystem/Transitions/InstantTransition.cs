@@ -42,6 +42,25 @@ public class InstantTransition : MonoBehaviour, IQuantumTransition
             return;
         }
         
+        var solidCol = GetComponent<Collider>();
+        if (solidCol != null && !_controller.IsGhostOnly)
+        {
+            var trigger = gameObject.AddComponent<BoxCollider>();
+            trigger.isTrigger = true;
+        
+            if (solidCol is BoxCollider solidBox)
+            {
+                trigger.center = solidBox.center;
+                trigger.size = solidBox.size * 1.2f;
+            }
+            
+            var rb = gameObject.AddComponent<Rigidbody>();
+            rb.isKinematic = true;
+
+            var contactLogic = gameObject.AddComponent<QuantumContactCollapse>();
+            contactLogic.Init(_controller);
+        }
+        
         _ghostManager.InitializeGhosts(_fixedOffsets, _originPosition);
 
         if (_controller.IsGhostOnly)
