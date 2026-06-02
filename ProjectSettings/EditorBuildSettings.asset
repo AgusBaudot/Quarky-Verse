@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/HUB.unity
+    path: Assets/Scenes/Design/HUB.unity
     guid: 720bb7770118fde40b1559e55145349d
   - enabled: 1
-    path: Assets/Scenes/CentralHUB.unity
+    path: Assets/Scenes/Design/CentralHUB.unity
     guid: 532a8419c2632f249aa524d9bd9a1db9
   - enabled: 1
-    path: Assets/Scenes/GameDesignScene.unity
+    path: Assets/Scenes/Design/GameDesignScene.unity
     guid: e180cdb36d76dc94199f0a6bff037a10
   m_configObjects: {}
