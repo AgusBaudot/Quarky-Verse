@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d5230bbbff1b259498a63178222c7810
+guid: 535557a460fa45e4cac932dce1c7d9bc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,23 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: StreetLamp_low_mt_StreetLamp_BaseColor
-    second: {fileID: 2800000, guid: e3c218cbc5e2d5a49be53cf66caaf433, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: StreetLamp_low_mt_StreetLamp_Emissive
-    second: {fileID: 2800000, guid: 2e5afa1331d003e4a8bee1342ff6ab8a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: StreetLamp_low_mt_StreetLamp_Metallic
-    second: {fileID: 2800000, guid: ec7d3ed67e0ca4749844cd5af061d216, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: StreetLamp_low_mt_StreetLamp_Normal
-    second: {fileID: 2800000, guid: b6e12e182aef1a24680f9f5297b42354, type: 3}
+      name: T_TREE_01
+    second: {fileID: 2800000, guid: 656f660acd75bc74bb87628d777d7d9b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
