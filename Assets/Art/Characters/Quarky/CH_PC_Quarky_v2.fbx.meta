@@ -1,0 +1,302 @@
+fileFormatVersion: 2
+guid: f66dbea86cfd44a4eb1e4396b48c1d17
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_QuarkyEyes
+    second: {fileID: 2100000, guid: 81719e4b2dd0fab49889922162669b21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_blueSkin
+    second: {fileID: 2100000, guid: cff513cb7d470c04485a17dcf5e6722f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_lightGrey
+    second: {fileID: 2100000, guid: fbcc0ceaeca0d8448a3c41b6dd0bb503, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_metal
+    second: {fileID: 2100000, guid: e97bd502c83972e4c996c3ef430ddd50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_naranja
+    second: {fileID: 2100000, guid: 39a7fc5f3a71101499693e31c23defb8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_white
+    second: {fileID: 2100000, guid: cb9a12632f78d934eb8004efa111b873, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: QuarkyEyes_png
+    second: {fileID: 2800000, guid: f47ad5fcd8afa364d8fac61723df10f4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_blueSkin_BaseColor
+    second: {fileID: 2800000, guid: 6849803c131b12e42857454a91e6ecd9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_blueSkin_Metallic
+    second: {fileID: 2800000, guid: 9a544a589e48fd44b97fd424991974c4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_blueSkin_Normal
+    second: {fileID: 2800000, guid: bf809af2bb5833345aa63c0daea518d8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_blueSkin_Roughness
+    second: {fileID: 2800000, guid: 6c20af1914e0775429fa8116e57219bf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_lightGrey_BaseColor
+    second: {fileID: 2800000, guid: 2a7f18f830a8a434a89f31abbda7d636, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_lightGrey_Metallic
+    second: {fileID: 2800000, guid: 975ba98d2a312354bb663ffbfbef8336, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_lightGrey_Normal
+    second: {fileID: 2800000, guid: db0d5be11838c5642b85698a834e3c76, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_lightGrey_Roughness
+    second: {fileID: 2800000, guid: f87df8e962a9ba144ba3430b0bf1ff03, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_metal_BaseColor
+    second: {fileID: 2800000, guid: 8e50dc8d52030854382295c5ca84a630, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_metal_Metallic
+    second: {fileID: 2800000, guid: fb3f66c3d0f974f47ac8e30ab7aa166b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_metal_Normal
+    second: {fileID: 2800000, guid: c42a18f48ad3d07418fb96dbd2c8ea25, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_metal_Roughness
+    second: {fileID: 2800000, guid: 8eb2f75df34357d4aacef0464ae8d902, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_naranja_BaseColor
+    second: {fileID: 2800000, guid: 56e6f156fb1d5a14ead55cedca3279eb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_naranja_Metallic
+    second: {fileID: 2800000, guid: 33b120e465c8d4c4abfe048651897c8e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_naranja_Normal
+    second: {fileID: 2800000, guid: 08de014f3b912b64db856421607e551e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_naranja_Roughness
+    second: {fileID: 2800000, guid: b352082c2205a614b81aca7b7f4ab9f8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_white_BaseColor
+    second: {fileID: 2800000, guid: 4b22ec02549441841be97a8683622525, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_white_Metallic
+    second: {fileID: 2800000, guid: f44aaf0192814d7439504003cab114d0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_white_Normal
+    second: {fileID: 2800000, guid: d079cdb1530a28c4488990d8f802f036, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Quarky_vTexturized_low_v4_mt_white_Roughness
+    second: {fileID: 2800000, guid: 8edc1929dd6cf5047b9b6cfe01cfa32a, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: ANIM_Quarky_Run_Loop
+      takeName: ANIM_Quarky_Run_Loop
+      internalID: -1622946403469248960
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ANIM_Quarky_Idle_Loop
+      takeName: ANIM_Quarky_Idle_Loop
+      internalID: -7397507758351479598
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
