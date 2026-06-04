@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: b1e2765e4d43c5b4ba6c6cd9b063a335
+guid: 57e9936ce3ca00b4da422ac0791a493f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: rect-road
+    second: {fileID: 2800000, guid: fadb44bf1f45a204281f9f7855d02474, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Curve-road
-    second: {fileID: 2800000, guid: 4beeac85ad74020429eb00974d1eec66, type: 3}
+    second: {fileID: 2800000, guid: 984c19a66bd6381478d8ed11dfcbfd58, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
