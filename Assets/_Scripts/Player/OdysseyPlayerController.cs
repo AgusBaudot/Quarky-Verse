@@ -3,6 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class OdysseyPlayerController : MonoBehaviour
 {
+    public Vector2 CurrentHorizontalVelocity => _currentMoveVelocity;
+    public bool IsGrounded => _isGrounded;
+    
     [Header("Movement")]
     [SerializeField] private float _topSpeed = 8f;
     [SerializeField, Tooltip("How fast the player reaches top speed")] 
