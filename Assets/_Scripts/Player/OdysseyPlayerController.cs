@@ -48,9 +48,11 @@ public class OdysseyPlayerController : MonoBehaviour
     private Vector3 _dashDirection;
 
     [Header("Grab System")]
-    [SerializeField] private float _grabDistance = 5f;
+    [SerializeField] private float _grabDistance = 6f;
+    [SerializeField] private float _grabRadius = 0.5f;
     [SerializeField] private float _holdDistance = 2f;
     [SerializeField] private Transform _cameraTransform2;
+    [SerializeField] private Collider _playerCollider;
     private PickableObject _heldObject;
     [SerializeField] private float _pushForce = 10f;
     private PushableObject _currentPushable;
@@ -205,14 +207,16 @@ public class OdysseyPlayerController : MonoBehaviour
     }
     private void TryGrab()
     {
-        Ray ray = new Ray(_cameraTransform2.position, _cameraTransform2.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, _grabDistance))
+        if (Physics.SphereCast(_cameraTransform2.position,_grabRadius,_cameraTransform2.forward,out RaycastHit hit,_grabDistance))
         {
             PickableObject pickable = hit.collider.GetComponent<PickableObject>();
             if (pickable != null)
             {
                 _heldObject = pickable;
                 _heldObject.OnGrab();
+                Vector3 holdTarget =_cameraTransform2.position +_cameraTransform2.forward * _holdDistance;
+                _heldObject.Rigidbody.position = holdTarget;
+                Physics.IgnoreCollision(_playerCollider,pickable.Collider,true);
             }
         }
     }
@@ -236,6 +240,7 @@ public class OdysseyPlayerController : MonoBehaviour
     }
     private void Release()
     {
+        Physics.IgnoreCollision(_playerCollider,_heldObject.Collider,false);
         _heldObject.OnRelease();
         _heldObject = null;
     }
