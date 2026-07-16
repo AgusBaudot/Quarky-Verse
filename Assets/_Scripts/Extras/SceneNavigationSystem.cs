@@ -26,13 +26,13 @@ public class SceneNavigationSystem : MonoBehaviour
     private IEnumerator LoadSceneRoutine(string sceneName)
     {
         _isLoading = true;
-        yield return _fader.FadeOut();
+        if (_fader != null) yield return _fader.FadeOut();
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         while (!operation.isDone)
         {
             yield return null;
         }
-        yield return _fader.FadeIn();
+        if (_fader != null) yield return _fader.FadeIn();
         _isLoading = false;
     }
 }
