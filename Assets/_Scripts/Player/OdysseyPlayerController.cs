@@ -207,14 +207,26 @@ public class OdysseyPlayerController : MonoBehaviour
         if (Physics.SphereCast(_cameraTransform2.position,_grabRadius,_cameraTransform2.forward,out RaycastHit hit,_grabDistance))
         {
             PickableObject pickable = hit.collider.GetComponent<PickableObject>();
-            if (pickable != null)
+            if (pickable == null) return;
+            // ¿El jugador está parado sobre este objeto?
+            if (Physics.Raycast(transform.position + Vector3.up * 0.1f,Vector3.down,out RaycastHit groundHit,1.5f))
             {
-                _heldObject = pickable;
-                _heldObject.OnGrab();
-                Vector3 holdTarget =_cameraTransform2.position +_cameraTransform2.forward * _holdDistance;
-                _heldObject.Rigidbody.position = holdTarget;
-                Physics.IgnoreCollision(_playerCollider,pickable.Collider,true);
+                if (groundHit.collider == pickable.Collider)
+                {
+                    Debug.Log("No se puede agarrar un objeto sobre el que estás parado.");
+                    return;
+                }
             }
+            Bounds playerBounds = _playerCollider.bounds;
+            Bounds objectBounds = pickable.Collider.bounds;
+            // ¿El jugador está apoyado sobre el objeto?
+            bool standingOnObject = playerBounds.min.y >= objectBounds.max.y - 0.05f && playerBounds.min.y <= objectBounds.max.y + 0.2f && playerBounds.Intersects(objectBounds);
+            if (standingOnObject) return;
+            _heldObject = pickable;
+            _heldObject.OnGrab();
+            Vector3 holdTarget = _cameraTransform2.position +_cameraTransform2.forward * _holdDistance;
+            _heldObject.Rigidbody.position = holdTarget;
+            Physics.IgnoreCollision(_playerCollider,pickable.Collider,true);
         }
     }
     private void HoldObject()
@@ -230,7 +242,10 @@ public class OdysseyPlayerController : MonoBehaviour
         if (distanceToTarget > 0.05f)
         {
             Vector3 newPosition = Vector3.Lerp(_heldObject.transform.position,holdTarget,Time.deltaTime * 15f);
-            _heldObject.Rigidbody.MovePosition(newPosition);
+            float minDistance = 1f;
+            Vector3 horizontalPlayer = new Vector3(transform.position.x, 0f, transform.position.z);
+            Vector3 horizontalObject = new Vector3(newPosition.x, 0f, newPosition.z);
+            if (Vector3.Distance(horizontalPlayer, horizontalObject) > minDistance) _heldObject.Rigidbody.MovePosition(newPosition);
         }
         Quaternion targetRotation =Quaternion.LookRotation(_cameraTransform2.forward);
         _heldObject.Rigidbody.MoveRotation(Quaternion.Lerp(_heldObject.transform.rotation,targetRotation,Time.deltaTime * 15f));
