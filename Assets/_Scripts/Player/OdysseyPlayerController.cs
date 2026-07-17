@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class OdysseyPlayerController : MonoBehaviour
 {
+    public event Action OnJump;
+    public event Action OnLand;
+    
     public Vector2 CurrentHorizontalVelocity => _currentMoveVelocity;
     public bool IsGrounded => _isGrounded;
     
@@ -40,6 +44,7 @@ public class OdysseyPlayerController : MonoBehaviour
     private Vector3 _currentMoveVelocity; // Horizontal _velocity (momentum)
     private float _turnSmoothVelocity;
     private bool _isGrounded;
+    private bool _wasGrounded;
 
     // Dash State
     private bool _isDashing;
@@ -171,7 +176,14 @@ public class OdysseyPlayerController : MonoBehaviour
 
     private void HandleGravityAndJump()
     {
+        _wasGrounded = _isGrounded;
+        
         _isGrounded = Physics.CheckSphere(_groundCheck.position, _groundDistance, _groundMask);
+
+        if (!_wasGrounded && _isGrounded && _velocity.y <= 0f)
+        {
+            OnLand?.Invoke();
+        }
 
         if (_isGrounded && _velocity.y < 0)
         {
@@ -181,6 +193,8 @@ public class OdysseyPlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
+            
+            OnJump?.Invoke();
         }
 
         // Apply Mario-style falling (_gravity gets stronger when falling down)
