@@ -17,7 +17,7 @@ public class ObjectDetectionSystem : MonoBehaviour
     void Update()
     {
         DetectObject();
-        if (Input.GetKeyDown(KeyCode.E)) Interact();
+        if (Input.GetKeyDown(KeyCode.F)) Interact();
     }
 
     private void DetectObject()
