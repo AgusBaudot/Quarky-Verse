@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+//If this is supposed to be interacted with, it should implement the IInteractable interface. Otherwise, the ObjectDetectionSystem won't find it.
 public class ActionButton : MonoBehaviour
 {
     [Header("Button Settings")]

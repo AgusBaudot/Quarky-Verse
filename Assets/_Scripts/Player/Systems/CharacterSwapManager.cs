@@ -16,7 +16,6 @@ public class CharacterSwapManager : MonoBehaviour
 
     private void Start()
     {
-        // Ensure we start the game controlling the main character
         ActivateCharacter(false);
     }
 
@@ -35,20 +34,16 @@ public class CharacterSwapManager : MonoBehaviour
         {
             _shodriCharacter.Teleport(_mainCharacter.transform.position, _mainCharacter.transform.rotation);
 
-            // Swap GameObjects
             _mainCharacter.enabled = false;
             _shodriCharacter.gameObject.SetActive(true);
 
-            // Update cameras to follow Shodri
             UpdateCameras(_shodriCharacter.transform);
         }
         else
         {
-            // Swap GameObjects (Main player naturally wakes up exactly where they were left)
             _shodriCharacter.gameObject.SetActive(false);
             _mainCharacter.enabled = true;
 
-            // Update cameras to follow Main Player
             UpdateCameras(_mainCharacter.transform);
         }
     }

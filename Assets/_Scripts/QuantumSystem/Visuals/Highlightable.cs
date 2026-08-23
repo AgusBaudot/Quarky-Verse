@@ -1,6 +1,5 @@
 using UnityEngine;
 
-//Excelent candidate for interface. Depend on abstraction, not on concrete things.
 public class Highlightable : MonoBehaviour, IHighlightable
 {
     [SerializeField] private Renderer _renderer;
