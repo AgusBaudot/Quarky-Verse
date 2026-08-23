@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1851400b794408aa79feec26b81756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroupID: 1
+  GroupID: 0
 --- !u!65 &153395333
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1851400b794408aa79feec26b81756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroupID: 1
+  GroupID: 0
 --- !u!65 &539760396
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1545,6 +1545,7 @@ GameObject:
   - component: {fileID: 799331061}
   - component: {fileID: 799331063}
   - component: {fileID: 799331064}
+  - component: {fileID: 799331065}
   m_Layer: 0
   m_Name: Entangled_Button_A
   m_TagString: Untagged
@@ -1699,6 +1700,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   _interactionUI: {fileID: 0}
+--- !u!114 &799331065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799331056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a49f0c3a794d1a8a219e5079e55088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _invertMovement: 0
 --- !u!1 &919058229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,6 +2783,7 @@ GameObject:
   - component: {fileID: 2100051957}
   - component: {fileID: 2100051956}
   - component: {fileID: 2100051955}
+  - component: {fileID: 2100051961}
   m_Layer: 0
   m_Name: Entangled_Button_B
   m_TagString: Untagged
@@ -2905,6 +2920,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100051953}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2100051961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100051953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a49f0c3a794d1a8a219e5079e55088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _invertMovement: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

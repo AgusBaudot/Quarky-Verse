@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public static class EntanglementNetwork
 {
@@ -38,6 +39,21 @@ public static class EntanglementNetwork
         for (int i = _groups[groupID].Count - 1; i >= 0; i--)
         {
             _groups[groupID][i].ReceiveQuantumSync(syncEvent);
+        }
+    }
+
+    public static void BroadcastMirrorMovement(int groupID, Vector3 delta, EntanglementNode sender)
+    {
+        if (!_groups.ContainsKey(groupID)) return;
+
+        for (int i = _groups[groupID].Count - 1; i >= 0; i--)
+        {
+            var node = _groups[groupID][i];
+            
+            if (node != sender) 
+            {
+                node.ReceiveMirrorMovement(delta);
+            }
         }
     }
 }

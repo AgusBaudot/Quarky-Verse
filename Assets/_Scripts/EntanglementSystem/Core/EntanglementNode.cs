@@ -10,6 +10,7 @@ public class EntanglementNode : MonoBehaviour
     public EntanglementState PreviousState { get; private set; } = EntanglementState.Idle;
 
     public event Action<EntanglementEvent> OnQuantumSync;
+    public event Action<Vector3> OnMirrorSync;
 
     private void OnEnable() => EntanglementNetwork.Register(this);
     private void OnDisable() => EntanglementNetwork.Unregister(this);
@@ -35,4 +36,6 @@ public class EntanglementNode : MonoBehaviour
 
         OnQuantumSync?.Invoke(syncEvent);
     }
+
+    public void ReceiveMirrorMovement(Vector3 delta) => OnMirrorSync?.Invoke(delta);
 }

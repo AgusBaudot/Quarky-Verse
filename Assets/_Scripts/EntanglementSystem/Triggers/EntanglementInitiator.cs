@@ -15,7 +15,7 @@ public class EntanglementInitiator : MonoBehaviour, IInteractable
         _node = GetComponent<EntanglementNode>();
     }
 
-    public void OnInteract() 
+    public void OnInteract()
     {
         if (!_canBeActivated) return;
         if (Time.time < _lastActivationTime + _cooldown) return;
