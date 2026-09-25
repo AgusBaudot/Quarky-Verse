@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3658625074621527370}
   - component: {fileID: 1000668277021007903}
   - component: {fileID: 3252664068936429806}
+  - component: {fileID: -6444309521416928385}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -155,9 +156,14 @@ MonoBehaviour:
   _acceleration: 20
   _deceleration: 25
   _turnSmoothTime: 0.1
-  _jumpHeight: 6
-  _gravity: -20
+  _movementInputThreshold: 0.1
+  _directionChangeMultiplier: 1
+  _maxJumpHeight: 3
+  _maxJumpTime: 0.75
   _fallMultiplier: 2
+  _earlyJumpCutoff: 0.5
+  _terminalVelocity: -20
+  _groundedGravity: -2
   _dashSpeed: 24
   _dashDuration: 0.2
   _dashCooldown: 1
@@ -168,10 +174,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _cameraTransform: {fileID: 0}
+  _cameraTransform2: {fileID: 0}
   _grabDistance: 5
   _holdDistance: 2
-  _cameraTransform2: {fileID: 0}
-  _pushForce: 10
+  _grabLerpSpeed: 15
+  _holdWallOffset: 0.3
+  _pushAngleThreshold: 0.5
 --- !u!114 &1000668277021007903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +211,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 3658625074621527370}
   _anim: {fileID: 5215217617786885286}
+--- !u!114 &-6444309521416928385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531558579533397619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316bb0f94017f5e4b9523247c5a9b481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6047207638714021656
 GameObject:
   m_ObjectHideFlags: 0
