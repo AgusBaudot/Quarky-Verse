@@ -9,6 +9,7 @@ public class OdysseyPlayerController : MonoBehaviour
     
     public Vector2 CurrentHorizontalVelocity => new Vector2(_currentMoveVelocity.x, _currentMoveVelocity.z);
     public bool IsGrounded => _isGrounded;
+    public float VerticalVelocity => _velocity.y;
     
     [Header("Movement")]
     [SerializeField] private float _topSpeed = 8f;
