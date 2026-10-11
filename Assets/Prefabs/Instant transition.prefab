@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 6230499296635358596}
   - component: {fileID: 8098692297630108294}
   - component: {fileID: 434498771716874941}
-  m_Layer: 0
+  - component: {fileID: 7881591140119763505}
+  m_Layer: 6
   m_Name: Instant transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,9 +32,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4659886780154013454}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.29, y: 1, z: -6.33}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.6071851, y: 0.35298184, z: 3.1042683}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -121,8 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a2dda93ba4c2946b6edb7aa3b2cf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ghostAlpha: 0.4
-  _ghostParent: {fileID: 0}
 --- !u!114 &6230499296635358596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85f2c3e0442df44d898ca76afa07044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interval: 2
+  _interval: 1
   _minimumThreshold: 0
   _role: 1
 --- !u!114 &8098692297630108294
@@ -165,11 +164,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _observations:
-  - offset: {x: 2, y: 0, z: 0}
+  - offset: {x: 1, y: 1, z: 6}
+    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 0}
-  - offset: {x: -2, y: 0, z: 0}
+  - offset: {x: 1, y: 1, z: -6}
+    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 0}
-  - offset: {x: 0, y: 2, z: 0}
+  - offset: {x: 1, y: 3, z: 1}
+    rotationOffset: {x: 0, y: 0, z: 0}
     consequence: {fileID: 0}
-  - offset: {x: 0, y: 0, z: 0}
-    consequence: {fileID: 0}
+--- !u!114 &7881591140119763505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659886780154013454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e05f64ef9ca4d3596834e79484a3c79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ghostAlpha: 0.4
+  _ghostParent: {fileID: 0}
