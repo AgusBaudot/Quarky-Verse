@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3658625074621527370}
   - component: {fileID: 1000668277021007903}
   - component: {fileID: 3252664068936429806}
+  - component: {fileID: 714491632571966236}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -38,6 +39,7 @@ Transform:
   m_Children:
   - {fileID: 1075555065073236597}
   - {fileID: 8391308141428112176}
+  - {fileID: 4134163858826383506}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7184110481266087368
@@ -155,9 +157,14 @@ MonoBehaviour:
   _acceleration: 20
   _deceleration: 25
   _turnSmoothTime: 0.1
-  _jumpHeight: 6
-  _gravity: -20
+  _movementInputThreshold: 0.1
+  _directionChangeMultiplier: 1
+  _maxJumpHeight: 3
+  _maxJumpTime: 0.75
   _fallMultiplier: 2
+  _earlyJumpCutoff: 0.5
+  _terminalVelocity: -20
+  _groundedGravity: -2
   _dashSpeed: 24
   _dashDuration: 0.2
   _dashCooldown: 1
@@ -168,10 +175,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _cameraTransform: {fileID: 0}
+  _cameraTransform2: {fileID: 0}
   _grabDistance: 5
   _holdDistance: 2
-  _cameraTransform2: {fileID: 0}
-  _pushForce: 10
+  _grabLerpSpeed: 15
+  _holdWallOffset: 0.3
+  _pushAngleThreshold: 0.5
 --- !u!114 &1000668277021007903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +212,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 3658625074621527370}
   _anim: {fileID: 5215217617786885286}
+--- !u!114 &714491632571966236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531558579533397619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5204bb61a851476eb6f3e34277709f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageHitbox: {fileID: 7492927449803290652}
+  _startupTime: 0.1
+  _activeFramesDuration: 0.2
+  _attackCooldown: 0.5
 --- !u!1 &6047207638714021656
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +259,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4731699323202286487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7492927449803290652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4134163858826383506}
+  - component: {fileID: 5175220871330123186}
+  - component: {fileID: 1608036744743138547}
+  m_Layer: 3
+  m_Name: MeleeHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4134163858826383506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492927449803290652}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.055, z: 0.673}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4731699323202286487}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5175220871330123186
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492927449803290652}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1608036744743138547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492927449803290652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf1232dc6df41758df708ed7853af00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useCollisionInsteadOfTrigger: 0
 --- !u!1001 &8356802078514289883
 PrefabInstance:
   m_ObjectHideFlags: 0
