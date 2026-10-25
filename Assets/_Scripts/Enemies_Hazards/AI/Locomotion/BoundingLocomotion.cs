@@ -34,16 +34,28 @@ namespace Enemies_Hazards
 
         private void ExecuteJump()
         {
-            Vector3 directionToTarget = (_agent.Target.position - transform.position).normalized;
-        
-            Vector3 jumpForce = new Vector3(
-                directionToTarget.x * _agent.Stats.JumpForce.z,
-                _agent.Stats.JumpForce.y,
-                directionToTarget.z * _agent.Stats.JumpForce.z
-            );
+            Vector3 displacement = _agent.Target.position - transform.position;
+            float targetHeight = displacement.y;
+            displacement.y = 0;
 
-            _rb.velocity = Vector3.zero;
-            _rb.AddForce(jumpForce, ForceMode.Impulse);
+            float gravity = Physics.gravity.y;
+            float verticalVelocity = _agent.Stats.JumpForce.y;
+
+            float timeToApex = -verticalVelocity / gravity;
+    
+            float apexHeight = (verticalVelocity * verticalVelocity) / (2 * Mathf.Abs(gravity));
+    
+            float fallHeight = Mathf.Max(0, apexHeight - targetHeight);
+            float timeToFall = Mathf.Sqrt(2 * fallHeight / Mathf.Abs(gravity));
+
+            float totalAirTime = timeToApex + timeToFall;
+
+            Vector3 horizontalVelocity = displacement / totalAirTime;
+
+            Vector3 finalVelocity = horizontalVelocity;
+            finalVelocity.y = verticalVelocity;
+
+            _rb.velocity = finalVelocity;
         }
     }
 }
