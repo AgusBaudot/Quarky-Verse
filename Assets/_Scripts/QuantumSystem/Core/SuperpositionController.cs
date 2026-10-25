@@ -23,6 +23,7 @@ public class SuperpositionController : MonoBehaviour
 
     public bool IsVisuallyQuantum => _isQuantumActive && !_isCollapsed;
     public bool IsGhostOnly => _role is QuantumObjectRole.Decorative or QuantumObjectRole.SwitchActivated;
+    public QuantumObjectRole Role => _role;
     
     [SerializeField] private float _interval = 2f;
     [SerializeField] private QuantumThreshold _minimumThreshold = QuantumThreshold.Small;

@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 5598815114780549204}
   - component: {fileID: 2691782658548320988}
   - component: {fileID: 3303829119245524347}
+  - component: {fileID: -4267620369773893420}
   m_Layer: 0
   m_Name: HUD_Canvas
   m_TagString: Untagged
@@ -249,6 +250,34 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-4267620369773893420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609529443019391020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f50347fb9a7423e9e2d2ef5968e7b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heartIcons:
+  - {fileID: 840037475252234907}
+  - {fileID: 2420846429530965332}
+  - {fileID: 6016574807231608313}
+  _healthText: {fileID: 0}
+  _sliderNode: {fileID: 2298960660684407985}
+  _segmentSnapPoints: []
+  _gogglesTimerRing: {fileID: 0}
+  _braceletStateText: {fileID: 0}
+  _particleHemisphere: {fileID: 0}
+  _waveHemisphere: {fileID: 0}
+  _visorOverlay: {fileID: 0}
+  _crosshairImage: {fileID: 0}
+  _neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  _minorColor: {r: 0, g: 1, b: 1, a: 1}
+  _majorColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1822369958265637589
 GameObject:
   m_ObjectHideFlags: 0
