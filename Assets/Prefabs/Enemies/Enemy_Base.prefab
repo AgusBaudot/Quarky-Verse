@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _useCollisionInsteadOfTrigger: 0
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &7477855569090350347
 GameObject:
   m_ObjectHideFlags: 0

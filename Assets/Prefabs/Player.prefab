@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerController: {fileID: 3658625074621527370}
+  _playerAttack: {fileID: 0}
   _anim: {fileID: 5215217617786885286}
 --- !u!114 &714491632571966236
 MonoBehaviour:
@@ -326,6 +327,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _useCollisionInsteadOfTrigger: 0
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &8356802078514289883
 PrefabInstance:
   m_ObjectHideFlags: 0
