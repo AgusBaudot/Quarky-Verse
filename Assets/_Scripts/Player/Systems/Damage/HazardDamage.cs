@@ -6,6 +6,6 @@ public class HazardDamage : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         if (PlayerHealth.Instance == null) return;
-        PlayerHealth.Instance.TakeDamage(1);
+        PlayerHealth.Instance.TakeDamage(1, transform.position);
     }
 }

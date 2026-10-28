@@ -21,11 +21,17 @@ public class CharacterSwapManager : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerHealth.Instance != null && PlayerHealth.Instance.IsDead) return;
         if (Input.GetKeyDown(KeyCode.Q))
         {
             _isPlayingAsShodri = !_isPlayingAsShodri;
             ActivateCharacter(_isPlayingAsShodri);
         }
+    }
+    public void ReturnToMainCharacter()
+    {
+        _isPlayingAsShodri = false;
+        ActivateCharacter(false);
     }
 
     private void ActivateCharacter(bool playAsShodri)
@@ -33,21 +39,17 @@ public class CharacterSwapManager : MonoBehaviour
         if (playAsShodri)
         {
             _shodriCharacter.Teleport(_mainCharacter.transform.position, _mainCharacter.transform.rotation);
-
             _mainCharacter.enabled = false;
             _shodriCharacter.gameObject.SetActive(true);
-
             UpdateCameras(_shodriCharacter.transform);
         }
         else
         {
             _shodriCharacter.gameObject.SetActive(false);
             _mainCharacter.enabled = true;
-
             UpdateCameras(_mainCharacter.transform);
         }
     }
-
     private void UpdateCameras(Transform newTarget)
     {
         if (_thirdPersonCamera) _thirdPersonCamera.SetTarget(newTarget);

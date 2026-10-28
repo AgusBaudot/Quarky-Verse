@@ -214,27 +214,17 @@ public class OdysseyPlayerController : MonoBehaviour
         if (inputDirection.magnitude >= _movementInputThreshold)
         {
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
-            
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
             Vector3 targetVelocity = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward * _topSpeed;
-            
             float turnDot = Vector3.Dot(_currentMoveVelocity.normalized, targetVelocity.normalized);
             float activeAcceleration = _acceleration;
-
-            if (turnDot < 0.5f) 
-            {
-                activeAcceleration *= _directionChangeMultiplier;
-            }
+            if (turnDot < 0.5f)  activeAcceleration *= _directionChangeMultiplier;
+            
 
             _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, targetVelocity, activeAcceleration * Time.deltaTime);
         }
-        else
-        {
-            _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, Vector3.zero, _deceleration * Time.deltaTime);
-        }
-
+        else _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, Vector3.zero, _deceleration * Time.deltaTime);
         _controller.Move(_currentMoveVelocity * Time.deltaTime);
     }
 
@@ -313,5 +303,14 @@ public class OdysseyPlayerController : MonoBehaviour
             _currentPushable = pushable;
         }
         else pushable.StopPush();
+    }
+    public void ResetMovementState()
+    {
+        _velocity = Vector3.zero;
+        _currentMoveVelocity = Vector3.zero;
+        _isDashing = false;
+        _isJumping = false;
+        _isJumpPressed = false;
+        _dashDirection = Vector3.zero;
     }
 }

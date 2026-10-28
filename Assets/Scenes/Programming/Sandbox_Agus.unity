@@ -123,6 +123,74 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &154797657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 154797660}
+  - component: {fileID: 154797659}
+  - component: {fileID: 154797658}
+  m_Layer: 0
+  m_Name: Checkpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &154797658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154797657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d39c0c647ef4c48b111c26ee6a869c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _checkpointManager: {fileID: 1217641605}
+  _playerTag: Player
+--- !u!65 &154797659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154797657}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &154797660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154797657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.24, y: 1.03, z: 23.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &180560122
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +437,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -713,7 +781,7 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
@@ -1979,6 +2047,53 @@ MonoBehaviour:
   _shodriCharacter: {fileID: 661809561}
   _thirdPersonCamera: {fileID: 963194231}
   _firstPersonCamera: {fileID: 872383357}
+--- !u!1 &1217641604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1217641606}
+  - component: {fileID: 1217641605}
+  m_Layer: 0
+  m_Name: CheckpointManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1217641605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217641604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215c35acd464cee41b68aa3cda1678a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 1807364694}
+  _playerHealth: {fileID: 1807364695}
+  _characterSwapManager: {fileID: 1207528596}
+--- !u!4 &1217641606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217641604}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.0641074, y: 3.8559692, z: 5.857526}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1230322482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,8 +2210,8 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
@@ -2594,6 +2709,14 @@ PrefabInstance:
       propertyPath: _visualModel
       value: 
       objectReference: {fileID: 1077107552}
+    - target: {fileID: -6444309521416928385, guid: 34aefc256ee43554b9bd6f0f2c75e79e, type: 3}
+      propertyPath: _knockbackForce
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6444309521416928385, guid: 34aefc256ee43554b9bd6f0f2c75e79e, type: 3}
+      propertyPath: _checkpointManager
+      value: 
+      objectReference: {fileID: 1217641605}
     - target: {fileID: 1000668277021007903, guid: 34aefc256ee43554b9bd6f0f2c75e79e, type: 3}
       propertyPath: _timerUI
       value: 
@@ -2658,6 +2781,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8990353299645907893, guid: 34aefc256ee43554b9bd6f0f2c75e79e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2679,6 +2806,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4731699323202286487, guid: 34aefc256ee43554b9bd6f0f2c75e79e, type: 3}
   m_PrefabInstance: {fileID: 1807364682}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1807364695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -6444309521416928385, guid: 34aefc256ee43554b9bd6f0f2c75e79e, type: 3}
+  m_PrefabInstance: {fileID: 1807364682}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316bb0f94017f5e4b9523247c5a9b481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1973329037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2757,3 +2895,5 @@ SceneRoots:
   - {fileID: 430933383}
   - {fileID: 1121827112}
   - {fileID: 1235237335}
+  - {fileID: 1217641606}
+  - {fileID: 154797660}
