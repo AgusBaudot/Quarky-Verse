@@ -21,7 +21,7 @@ public class CharacterSwapManager : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerHealth.Instance != null && PlayerHealth.Instance.IsDead) return;
+        if (PlayerHealth.Instance != null && (PlayerHealth.Instance.IsDead || PlayerHealth.Instance.IsInvulnerable)) return;
         if (Input.GetKeyDown(KeyCode.Q))
         {
             _isPlayingAsShodri = !_isPlayingAsShodri;
@@ -54,5 +54,10 @@ public class CharacterSwapManager : MonoBehaviour
     {
         if (_thirdPersonCamera) _thirdPersonCamera.SetTarget(newTarget);
         if (_firstPersonCamera) _firstPersonCamera.SetTarget(newTarget);
+    }
+    public void SetControlsLocked(bool locked)
+    {
+        if (_mainCharacter != null) _mainCharacter.SetControlsLocked(locked);
+        if (_shodriCharacter != null) _shodriCharacter.SetControlsLocked(locked);
     }
 }

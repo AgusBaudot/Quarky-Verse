@@ -15,7 +15,7 @@ public class ShodriPlayerController : MonoBehaviour
     private CharacterController _controller;
     private Vector3 _currentMoveVelocity;
     private float _turnSmoothVelocity;
-
+    private bool _controlsLocked;
     void Start()
     {
         _controller = GetComponent<CharacterController>();
@@ -23,13 +23,13 @@ public class ShodriPlayerController : MonoBehaviour
 
     void Update()
     {
+        if (_controlsLocked) return;
         HandleMovement();
     }
 
     public void Teleport(Vector3 pos, Quaternion rot)
     {
-        if (_controller)
-            _controller.enabled = false;
+        if (_controller) _controller.enabled = false;
 
         transform.position = pos;
         transform.rotation = rot;
@@ -46,20 +46,18 @@ public class ShodriPlayerController : MonoBehaviour
         {
             // Calculate direction relative to the camera
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
-            
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            
             _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, moveDirection * _topSpeed, _acceleration * Time.deltaTime);
         }
-        else
-        {
-            _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, Vector3.zero, _deceleration * Time.deltaTime);
-        }
-
+        else _currentMoveVelocity = Vector3.MoveTowards(_currentMoveVelocity, Vector3.zero, _deceleration * Time.deltaTime);
         _controller.Move(_currentMoveVelocity * Time.deltaTime);
     }
-    
+    public void SetControlsLocked(bool locked)
+    {
+        _controlsLocked = locked;
+        if (locked) _currentMoveVelocity = Vector3.zero;
+    }
+
 }

@@ -83,6 +83,8 @@ public class OdysseyPlayerController : MonoBehaviour
 
     private PickableObject _heldObject;
     private PushableObject _currentPushable;
+    
+    private bool _controlsLocked;
 
     private void Awake()
     {
@@ -104,6 +106,7 @@ public class OdysseyPlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (_controlsLocked) return;
         HandleDash();
         HandleGrab();
         
@@ -312,5 +315,10 @@ public class OdysseyPlayerController : MonoBehaviour
         _isJumping = false;
         _isJumpPressed = false;
         _dashDirection = Vector3.zero;
+    }
+    public void SetControlsLocked(bool locked)
+    {
+        _controlsLocked = locked;
+        if (locked) ResetMovementState();
     }
 }

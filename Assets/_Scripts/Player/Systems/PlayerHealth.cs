@@ -37,11 +37,13 @@ public class PlayerHealth : MonoBehaviour
 
     private OdysseyPlayerController _playerController;
     private Coroutine _respawnCoroutine;
+    private CharacterSwapManager _characterSwapManager;
 
     private void Awake()
     {
         _playerController = GetComponent<OdysseyPlayerController>();
         if (_checkpointManager == null) _checkpointManager = FindObjectOfType<CheckpointManager>();
+        _characterSwapManager = FindObjectOfType<CharacterSwapManager>();
         Instance = this;
         _currentHealth = _maxHealth;
     }
@@ -108,6 +110,7 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator InvulnerabilityRoutine()
     {
         _isInvulnerable = true;
+        SetPlayerControlsLocked(true);
         float elapsedTime = 0f;
         while (elapsedTime < _invulnerabilityDuration)
         {
@@ -119,6 +122,7 @@ public class PlayerHealth : MonoBehaviour
         }
         if (_visualModel != null) _visualModel.SetActive(true);
         _isInvulnerable = false;
+        SetPlayerControlsLocked(false);
         _invulnerabilityCoroutine = null;
     }
 
@@ -126,6 +130,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (_isDead) return;
         _isDead = true;
+        SetPlayerControlsLocked(true);
         _isInvulnerable = false;
         if (_invulnerabilityCoroutine != null)
         {
@@ -178,5 +183,11 @@ public class PlayerHealth : MonoBehaviour
             _playerController.ResetMovementState();
             _playerController.enabled = true;
         }
+        SetPlayerControlsLocked(false);
+    }
+    private void SetPlayerControlsLocked(bool locked)
+    {
+        if (_characterSwapManager != null) _characterSwapManager.SetControlsLocked(locked);
+        else if (_playerController != null) _playerController.SetControlsLocked(locked);
     }
 }
