@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class CharacterSwapManager : MonoBehaviour
 {
+    public static event Action<bool> OnCharacterSwapped;
+    
     [Header("Characters")]
     [SerializeField, Tooltip("The main player's controller")] 
     private OdysseyPlayerController _mainCharacter;
@@ -46,6 +49,8 @@ public class CharacterSwapManager : MonoBehaviour
 
             UpdateCameras(_mainCharacter.transform);
         }
+        
+        OnCharacterSwapped?.Invoke(playAsShodri);
     }
 
     private void UpdateCameras(Transform newTarget)
