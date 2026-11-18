@@ -38,6 +38,8 @@ public class OdysseyPlayerController : MonoBehaviour
     [SerializeField] private float _terminalVelocity = -20f;
     [SerializeField, Tooltip("Gravity applied while grounded to prevent bouncing down slopes")] 
     private float _groundedGravity = -2f;
+    [SerializeField, Tooltip("Time the player is locked in place after landing to prevent sliding")]
+    private float _landingPauseDuration = 0.15f;
 
     [Header("Dash")]
     [SerializeField] private float _dashSpeed = 24f;
@@ -76,6 +78,7 @@ public class OdysseyPlayerController : MonoBehaviour
 
     private float _gravity;
     private float _initialJumpVelocity;
+    private float _movementLockEndTime;
 
     private bool _isDashing;
     private float _dashStartTime;
@@ -130,11 +133,14 @@ public class OdysseyPlayerController : MonoBehaviour
         {
             _isJumping = false;
             OnLand?.Invoke();
+            
+            _movementLockEndTime = Time.time + _landingPauseDuration;
+            _currentMoveVelocity = Vector3.zero;
         }
 
         _isJumpPressed = Input.GetKey(KeyCode.Space);
 
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded && Time.time >= _movementLockEndTime)
         {
             _isJumping = true;
             _velocity.y = _initialJumpVelocity;
@@ -167,7 +173,7 @@ public class OdysseyPlayerController : MonoBehaviour
 
     private void HandleDash()
     {
-        if (Input.GetKeyDown(_dashKey) && Time.time >= _lastDashTime + _dashCooldown && !_isDashing)
+        if (Input.GetKeyDown(_dashKey) && Time.time >= _lastDashTime + _dashCooldown && !_isDashing && Time.time >= _movementLockEndTime)
         {
             StartDash();
         }
@@ -208,6 +214,12 @@ public class OdysseyPlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (Time.time < _movementLockEndTime)
+        {
+            _currentMoveVelocity = Vector3.zero;
+            return;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal"); 
         float vertical = Input.GetAxisRaw("Vertical");     
         Vector3 inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
