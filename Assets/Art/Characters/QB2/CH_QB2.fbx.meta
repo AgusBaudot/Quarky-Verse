@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: 39bc0b1f1c427fd468f5d9d4685158ad
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_QB2_green
+    second: {fileID: 2100000, guid: f7591fd43e1e8fa4a819c8b9db157305, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_QB2_lightBlue
+    second: {fileID: 2100000, guid: d8683fb7e45302e4daea7a94b66d4cbf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_QB2_turquoise
+    second: {fileID: 2100000, guid: b83e56f11acd399408f1fc1706590b79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_QB2_visor
+    second: {fileID: 2100000, guid: cb2cff71e0f78fb4981a375cbee5ce94, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mt_QB2_white
+    second: {fileID: 2100000, guid: 22bd8da061187e4478aee7a379e20610, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_justVisor_low_mt_QB2_visor_BaseColor
+    second: {fileID: 2800000, guid: 9206067a64885024bada68b64785d625, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_justVisor_low_mt_QB2_visor_Emissive
+    second: {fileID: 2800000, guid: 190d082d3e73dd94b8e1f0a42056cd1d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_justVisor_low_mt_QB2_visor_Metallic
+    second: {fileID: 2800000, guid: 60d158e2a0c5ee441ba27397384c6cd8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_justVisor_low_mt_QB2_visor_Roughness
+    second: {fileID: 2800000, guid: ed007cedbb0c15c4696f3015e45446b4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_green_BaseColor
+    second: {fileID: 2800000, guid: d0ae911dc184a6d4995fe80c3ff0edd1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_green_Emissive
+    second: {fileID: 2800000, guid: b6a8b75b5ab6e9f498af5480043b336f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_green_Metallic
+    second: {fileID: 2800000, guid: a94ff31233ddca84688458311d8ad5a9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_green_Roughness
+    second: {fileID: 2800000, guid: d4fae856ff69c204f9dc0ae80ad492b6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_lightBlue_BaseColor
+    second: {fileID: 2800000, guid: 63b08bc290a8d4e48ae0e96194afac0d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_lightBlue_Emissive
+    second: {fileID: 2800000, guid: 07bfb5e896a774e4891a23a2ce14208a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_lightBlue_Metallic
+    second: {fileID: 2800000, guid: 1cb85bdc4a289e14ebe96a36b3fcb3d1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_lightBlue_Roughness
+    second: {fileID: 2800000, guid: 5e051871bddb22d44a88937595965adf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_turquoise_BaseColor
+    second: {fileID: 2800000, guid: f873684b93b678a45b044d5698a93c13, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_turquoise_Emissive
+    second: {fileID: 2800000, guid: 1ae9b46522f31074a9477de0713386af, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_turquoise_Metallic
+    second: {fileID: 2800000, guid: ff4d47dc461041d4ba5ee49539786c9b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_turquoise_Roughness
+    second: {fileID: 2800000, guid: 9daa8eaffbbff13438078d32d36b936c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_white_BaseColor
+    second: {fileID: 2800000, guid: 159b3dd582952d248ad8ec6efd9718f3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_white_Emissive
+    second: {fileID: 2800000, guid: 93a628b33a029884ca190d894ab4b508, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_white_Metallic
+    second: {fileID: 2800000, guid: 4857b7c33583f7f49b3d441ff284c965, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: qb2_noVisor_low_mt_QB2_white_Roughness
+    second: {fileID: 2800000, guid: c0054508064fea643b9132b75ab2e3c5, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
