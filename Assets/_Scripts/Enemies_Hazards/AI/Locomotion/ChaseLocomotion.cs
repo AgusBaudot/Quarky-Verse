@@ -26,21 +26,31 @@ namespace Enemies_Hazards
         {
             if (!_canMove || _agent.Target == null) return;
 
-            Vector3 direction = (_agent.Target.position - transform.position).normalized;
-            direction.y = 0;
+            Vector3 destination = _agent.CurrentDestination;
+            Vector3 toDestination = destination - transform.position;
+            toDestination.y = 0f;
 
-            if (direction != Vector3.zero)
+            float horizontalDistance = toDestination.magnitude;
+
+            if (!_agent.IsTargetInDetectionRange && horizontalDistance <= _agent.Stats.SpawnReturnThreshold)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f); 
+                _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+                return;
             }
 
-            Vector3 targetVelocity = direction * _agent.Stats.MaxSpeed;
-            targetVelocity.y = _rb.velocity.y;
-    
-            _rb.velocity = Vector3.MoveTowards(_rb.velocity, targetVelocity, _agent.Stats.Acceleration * Time.fixedDeltaTime);
-    
-            if (Vector3.Distance(transform.position, _agent.Target.position) <= _agent.Stats.AttackRange)
+            if (horizontalDistance > 0.001f)
+            {
+                Vector3 direction = toDestination / horizontalDistance;
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
+
+                Vector3 targetVelocity = direction * _agent.Stats.MaxSpeed;
+                targetVelocity.y = _rb.velocity.y;
+                _rb.velocity = Vector3.MoveTowards(_rb.velocity, targetVelocity, _agent.Stats.Acceleration * Time.fixedDeltaTime);
+            }
+
+            if (_agent.IsTargetInDetectionRange &&
+                Vector3.Distance(transform.position, _agent.Target.position) <= _agent.Stats.AttackRange)
             {
                 _agent.InitiateAttack();
             }

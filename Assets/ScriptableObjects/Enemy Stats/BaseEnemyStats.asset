@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 5
   Acceleration: 15
-  DetectionRadius: 10
+  DetectionRadius: 5
+  SpawnReturnThreshold: 0.25
   AttackRange: 1.5
   AttackStartupTime: 0.2
   AttackActiveFramesDuration: 0.3

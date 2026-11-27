@@ -23,18 +23,27 @@ namespace Enemies_Hazards
         {
             if (!_canMove || _agent.Target == null) return;
 
+            if (!_agent.IsTargetInDetectionRange)
+            {
+                Vector3 toSpawn = _agent.SpawnPosition - transform.position;
+                toSpawn.y = 0f;
+
+                if (toSpawn.magnitude <= _agent.Stats.SpawnReturnThreshold)
+                    return;
+            }
+
             _jumpTimer -= Time.deltaTime;
-        
+
             if (_jumpTimer <= 0f && Mathf.Abs(_rb.velocity.y) < 0.1f)
             {
-                ExecuteJump();
+                ExecuteJump(_agent.CurrentDestination);
                 _jumpTimer = _agent.Stats.JumpCooldown;
             }
         }
 
-        private void ExecuteJump()
+        private void ExecuteJump(Vector3 destination)
         {
-            Vector3 displacement = _agent.Target.position - transform.position;
+            Vector3 displacement = destination - transform.position;
             float targetHeight = displacement.y;
             displacement.y = 0;
 
@@ -42,16 +51,13 @@ namespace Enemies_Hazards
             float verticalVelocity = _agent.Stats.JumpForce.y;
 
             float timeToApex = -verticalVelocity / gravity;
-    
             float apexHeight = (verticalVelocity * verticalVelocity) / (2 * Mathf.Abs(gravity));
-    
             float fallHeight = Mathf.Max(0, apexHeight - targetHeight);
             float timeToFall = Mathf.Sqrt(2 * fallHeight / Mathf.Abs(gravity));
 
             float totalAirTime = timeToApex + timeToFall;
 
             Vector3 horizontalVelocity = displacement / totalAirTime;
-
             Vector3 finalVelocity = horizontalVelocity;
             finalVelocity.y = verticalVelocity;
 
