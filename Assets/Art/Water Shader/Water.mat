@@ -58,8 +58,8 @@ Material:
     - _FoamTiling: 110.66
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WaveSpeed: 1.61
-    - _WaveStrength: 0.96
+    - _WaveSpeed: 1.6
+    - _WaveStrength: 0.47
     m_Colors:
     - _CausticColor: {r: 19.930763, g: 19.930763, b: 19.930763, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
