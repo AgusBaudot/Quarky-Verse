@@ -1,23 +1,22 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ActionButton : MonoBehaviour
+public class ActionButton : MonoBehaviour, IInteractable
 {
     [Header("Button Settings")]
-    [SerializeField] private bool _temporaryMode = false;
-    [SerializeField] private float _activeDuration = 3f;
+    [SerializeField] private GameObject _targetDoor;
+    [SerializeField] private float _interactionRange = 2f;
 
     [Header("Events")]
     [SerializeField] private UnityEvent _onPressed;
-    [SerializeField] private UnityEvent _onReleased;
 
     [Header("Visual")]
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Color _inactiveColor = Color.red;
     [SerializeField] private Color _activeColor = Color.green;
 
-    private bool _isActive;
+    public float InteractionRange => _interactionRange;
+    public bool IsActivated { get; private set; }
 
     private void Start()
     {
@@ -26,39 +25,25 @@ public class ActionButton : MonoBehaviour
 
     public void OnInteract()
     {
-        if (_isActive) return;
-        ActivateButton();
-    }
-
-    private void ActivateButton()
-    {
-        _isActive = true;
-        Debug.Log("Button Pressed");
+        if (IsActivated) return;
+        if (_targetDoor == null)
+        {
+            Debug.LogWarning($"No hay una puerta asignada al botón {name}.", this);
+            return;
+        }
+        IsActivated = true;
+        Destroy(_targetDoor);
+        _targetDoor = null;
         _onPressed?.Invoke();
         UpdateVisual();
-        if (_temporaryMode) StartCoroutine(TemporaryRoutine());
     }
 
-    private IEnumerator TemporaryRoutine()
-    {
-        yield return new WaitForSeconds(_activeDuration);
-        DeactivateButton();
-    }
-
-    private void DeactivateButton()
-    {
-        _isActive = false;
-        Debug.Log("Button Released");
-        _onReleased?.Invoke();
-        UpdateVisual();
-    }
-
+    public void OnFocus() { }
+    public void OnLoseFocus() { }
     private void UpdateVisual()
     {
-        if (_renderer != null)
-        {
-            Color target = _isActive ? _activeColor : _inactiveColor;
-            _renderer.material.SetColor("_BaseColor", target);
-        }
+        if (_renderer == null) return;
+        Color targetColor = IsActivated ? _activeColor : _inactiveColor;
+        _renderer.material.SetColor("_BaseColor", targetColor);
     }
 }

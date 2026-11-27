@@ -49,9 +49,9 @@ public class OdysseyPlayerController : MonoBehaviour
     [SerializeField] private float _grabRadius = 0.5f;
     [SerializeField] private float _holdDistance = 2f;
     [SerializeField] private Transform _cameraTransform2;
+    [SerializeField] private Transform _holdPoint;
     [SerializeField] private Collider _playerCollider;
     private PickableObject _heldObject;
-    [SerializeField] private float _pushForce = 10f;
     private PushableObject _currentPushable;
 
     void Start()
@@ -72,8 +72,18 @@ public class OdysseyPlayerController : MonoBehaviour
         if (_currentPushable != null)
         {
             Vector3 horizontalMove = new Vector3(_currentMoveVelocity.x, 0f, _currentMoveVelocity.z);
-            if (horizontalMove.magnitude < 0.1f) _currentPushable.StopPush();
+            bool pushingInput = _heldObject == null && Input.GetKey(KeyCode.F) && horizontalMove.magnitude >= 0.1f && Vector3.Dot(transform.forward, horizontalMove.normalized) > 0.5f;
+            if (pushingInput && _currentPushable.IsWithinRange(transform)) _currentPushable.Push(transform, transform.forward);
+            else
+            {
+                _currentPushable.StopPush();
+                _currentPushable = null;
+            }
         }
+    }
+    private void FixedUpdate()
+    {
+        if (_heldObject != null) HoldObject();
     }
 
     private void HandleDash()
@@ -195,12 +205,8 @@ public class OdysseyPlayerController : MonoBehaviour
     // Pickup objects and release logic would go here.
     private void HandleGrab()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (_heldObject == null) TryGrab();
-            else Release();
-        }
-        if (_heldObject != null) HoldObject();
+        if (Input.GetKeyDown(KeyCode.F) && _heldObject == null && _currentPushable == null) TryGrab();
+        if (Input.GetKeyUp(KeyCode.F) && _heldObject != null) Release();
     }
     private void TryGrab()
     {
@@ -208,6 +214,7 @@ public class OdysseyPlayerController : MonoBehaviour
         {
             PickableObject pickable = hit.collider.GetComponent<PickableObject>();
             if (pickable == null) return;
+            if (_currentPushable != null || !pickable.IsWithinRange(transform)) return;
             // ¿El jugador está parado sobre este objeto?
             if (Physics.Raycast(transform.position + Vector3.up * 0.1f,Vector3.down,out RaycastHit groundHit,1.5f))
             {
@@ -224,61 +231,63 @@ public class OdysseyPlayerController : MonoBehaviour
             if (standingOnObject) return;
             _heldObject = pickable;
             _heldObject.OnGrab();
-            Vector3 holdTarget = _cameraTransform2.position +_cameraTransform2.forward * _holdDistance;
-            _heldObject.Rigidbody.position = holdTarget;
             Physics.IgnoreCollision(_playerCollider,pickable.Collider,true);
+            Physics.IgnoreCollision(_controller, pickable.Collider, true);
         }
     }
     private void HoldObject()
     {
-        Vector3 holdTarget = _cameraTransform2.position + _cameraTransform2.forward * _holdDistance;
+        Vector3 holdTarget = _holdPoint != null ? _holdPoint.position : _cameraTransform2.position + _cameraTransform2.forward * _heldObject.HoldDistance;
         Vector3 direction = holdTarget - _heldObject.transform.position;
-        // Detectar paredes entre objeto y target
-        if (Physics.Raycast(_heldObject.transform.position,direction.normalized,out RaycastHit hit,direction.magnitude))
+        float distance = direction.magnitude;
+
+        if (distance > 0.01f)
         {
-            if (hit.collider.gameObject != _heldObject.gameObject) holdTarget = hit.point - direction.normalized * 0.3f;
+            Vector3 targetPosition = holdTarget;
+            float radius = Mathf.Max(0.05f,Mathf.Min(_heldObject.Collider.bounds.extents.x,_heldObject.Collider.bounds.extents.y,_heldObject.Collider.bounds.extents.z));
+            RaycastHit[] hits = Physics.SphereCastAll(_heldObject.transform.position,radius,direction.normalized,distance);
+            float nearestHit = distance;
+            foreach (RaycastHit hit in hits)
+            {
+                if (hit.collider == _heldObject.Collider || hit.collider == _playerCollider || hit.collider == _controller) continue;  
+                if (hit.distance < nearestHit)
+                {
+                    nearestHit = hit.distance;
+                    targetPosition = hit.point + hit.normal * radius;
+                }
+            }
+            Vector3 nextPosition = Vector3.MoveTowards(_heldObject.Rigidbody.position,targetPosition,15f * Time.fixedDeltaTime);
+            _heldObject.Rigidbody.MovePosition(nextPosition);
         }
-        float distanceToTarget =Vector3.Distance(_heldObject.transform.position,holdTarget);
-        if (distanceToTarget > 0.05f)
+        if (_cameraTransform2.forward.sqrMagnitude > 0.001f)
         {
-            Vector3 newPosition = Vector3.Lerp(_heldObject.transform.position,holdTarget,Time.deltaTime * 15f);
-            float minDistance = 1f;
-            Vector3 horizontalPlayer = new Vector3(transform.position.x, 0f, transform.position.z);
-            Vector3 horizontalObject = new Vector3(newPosition.x, 0f, newPosition.z);
-            if (Vector3.Distance(horizontalPlayer, horizontalObject) > minDistance) _heldObject.Rigidbody.MovePosition(newPosition);
+            Quaternion targetRotation = Quaternion.LookRotation(_cameraTransform2.forward);
+            _heldObject.Rigidbody.MoveRotation(Quaternion.Lerp(_heldObject.Rigidbody.rotation,targetRotation,15f * Time.fixedDeltaTime));
         }
-        Quaternion targetRotation =Quaternion.LookRotation(_cameraTransform2.forward);
-        _heldObject.Rigidbody.MoveRotation(Quaternion.Lerp(_heldObject.transform.rotation,targetRotation,Time.deltaTime * 15f));
     }
     private void Release()
     {
-        Physics.IgnoreCollision(_playerCollider,_heldObject.Collider,false);
+        Physics.IgnoreCollision(_playerCollider, _heldObject.Collider, false);
+        Physics.IgnoreCollision(_controller, _heldObject.Collider, false);
         _heldObject.OnRelease();
         _heldObject = null;
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         PushableObject pushable = hit.collider.GetComponent<PushableObject>();
-
         if (pushable == null)
         {
+            if (_currentPushable != null) _currentPushable.StopPush();
             _currentPushable = null;
             return;
         }
         Vector3 horizontalMove = new Vector3(_currentMoveVelocity.x, 0f, _currentMoveVelocity.z);
-        // El jugador debe estar moviéndose
-        if (horizontalMove.magnitude < 0.1f)
+        bool pushingTowardObject = !_isDashing && horizontalMove.magnitude >= 0.1f && Vector3.Dot(transform.forward, horizontalMove.normalized) > 0.5f && Vector3.Dot(transform.forward, -hit.normal) > 0.5f;
+        if (pushingTowardObject && Input.GetKey(KeyCode.F) && pushable.IsWithinRange(transform)) _currentPushable = pushable;
+        else
         {
             pushable.StopPush();
-            return;
+            _currentPushable = null;
         }
-        // Verificar que empuja desde el frente
-        float dot = Vector3.Dot(transform.forward, -hit.normal);
-        if (dot > 0.5f)
-        {
-            pushable.Push(transform.forward);
-            _currentPushable = pushable;
-        }
-        else pushable.StopPush();
     }
 }
