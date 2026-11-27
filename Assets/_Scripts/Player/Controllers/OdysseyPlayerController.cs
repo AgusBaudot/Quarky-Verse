@@ -10,6 +10,7 @@ public class OdysseyPlayerController : MonoBehaviour
     public Vector2 CurrentHorizontalVelocity => new Vector2(_currentMoveVelocity.x, _currentMoveVelocity.z);
     public bool IsGrounded => _isGrounded;
     public float VerticalVelocity => _velocity.y;
+    public CharacterController Controller => _controller;
     
     [Header("Movement")]
     [SerializeField] private float _topSpeed = 8f;
@@ -326,5 +327,31 @@ public class OdysseyPlayerController : MonoBehaviour
             _currentPushable = pushable;
         }
         else pushable.StopPush();
+    }
+
+    public void Teleport(Vector3 position, Quaternion rotation)
+    {
+        if (_controller != null)
+            _controller.enabled = false;
+        
+        transform.position = position;
+        transform.rotation = rotation;
+        
+        if (_controller != null)
+            _controller.enabled = true;
+    }
+    
+    public void OnControlLost()
+    {
+        if (_heldObject != null) Release();
+        if (_currentPushable != null)
+        {
+            _currentPushable.StopPush();
+            _currentPushable = null;
+        }
+
+        _isDashing = false;
+        _currentMoveVelocity = Vector3.zero;
+        _velocity = Vector3.zero;
     }
 }

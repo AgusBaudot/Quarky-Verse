@@ -100,6 +100,37 @@ Transform:
   - {fileID: 5622548355599371980}
   m_Father: {fileID: 3117694807666911128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &773026680290335294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3459587738509201166}
+  m_Layer: 10
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3459587738509201166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773026680290335294}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1115537408397894711}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1182512729143204410
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,8 +666,8 @@ GameObject:
   - component: {fileID: 95116908028573331}
   - component: {fileID: 8401486872059673294}
   - component: {fileID: 2018799726020723482}
-  - component: {fileID: 3075225613412042231}
-  m_Layer: 0
+  - component: {fileID: 9052948293783390957}
+  m_Layer: 10
   m_Name: Shodri
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,6 +688,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1633885240946323559}
+  - {fileID: 3459587738509201166}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5024700142482499633
@@ -756,7 +788,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3075225613412042231
+--- !u!114 &9052948293783390957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -765,14 +797,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 6266860092725970419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7e8762abb0dc944823de586c015d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 606db03832fa4d34b884b4ccf64bbefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _topSpeed: 8
   _acceleration: 20
   _deceleration: 25
   _turnSmoothTime: 0.1
+  _movementInputThreshold: 0.1
+  _directionChangeMultiplier: 1
+  _maxJumpHeight: 3
+  _maxJumpTime: 0.75
+  _fallMultiplier: 2
+  _earlyJumpCutoff: 0.5
+  _terminalVelocity: -20
+  _groundedGravity: -2
+  _landingPauseDuration: 0.15
+  _dashSpeed: 24
+  _dashDuration: 0.2
+  _dashCooldown: 1
+  _dashKey: 304
+  _groundCheck: {fileID: 3459587738509201166}
+  _groundDistance: 0.3
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
   _cameraTransform: {fileID: 0}
+  _cameraTransform2: {fileID: 0}
+  _grabDistance: 5
+  _holdDistance: 2
+  _grabLerpSpeed: 15
+  _holdWallOffset: 0.3
+  _pushAngleThreshold: 0.5
 --- !u!1 &6812274085367653880
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,11 +27,10 @@ public class HUDController : MonoBehaviour
 
     private void OnEnable()
     {
-        // If PlanckBar is migrated to SO Event Channel, replace Instance subscription here
         if (PlanckBar.Instance != null)
             PlanckBar.Instance.OnThresholdChanged += UpdatePlanckVisuals;
 
-        CharacterSwapManager.OnCharacterSwapped += UpdateBraceletState;
+        CharacterSwapManager.OnControlModeChanged += UpdateBraceletState;
         CollapseGlassesController.OnGlassesToggled += ToggleGogglesOverlay;
         CollapseGlassesController.OnTimerUpdated += UpdateGogglesTimer;
         CollapseGlassesController.OnTargetHovered += UpdateCrosshair;
@@ -42,7 +41,7 @@ public class HUDController : MonoBehaviour
         if (PlanckBar.Instance != null)
             PlanckBar.Instance.OnThresholdChanged -= UpdatePlanckVisuals;
 
-        CharacterSwapManager.OnCharacterSwapped -= UpdateBraceletState;
+        CharacterSwapManager.OnControlModeChanged -= UpdateBraceletState;
         CollapseGlassesController.OnGlassesToggled -= ToggleGogglesOverlay;
         CollapseGlassesController.OnTimerUpdated -= UpdateGogglesTimer;
         CollapseGlassesController.OnTargetHovered -= UpdateCrosshair;
@@ -71,11 +70,13 @@ public class HUDController : MonoBehaviour
         }
     }
 
-    private void UpdateBraceletState(bool isShodri)
+    private void UpdateBraceletState(ControlMode mode)
     {
-        _braceletStateText.text = isShodri ? "WAVE" : "PARTICLE";
-        _particleHemisphere.color = isShodri ? Color.gray : new Color(1f, 0.5f, 0f);
-        _waveHemisphere.color = isShodri ? Color.cyan : Color.gray;
+        bool isShrodri = mode == ControlMode.Shrodri;
+
+        _braceletStateText.text = isShrodri ? "WAVE" : "PARTICLE";
+        _particleHemisphere.color = isShrodri ? Color.gray : new Color(1f, 0.5f, 0f);
+        _waveHemisphere.color = isShrodri ? Color.cyan : Color.gray;
     }
 
     private void ToggleGogglesOverlay(bool isActive)
