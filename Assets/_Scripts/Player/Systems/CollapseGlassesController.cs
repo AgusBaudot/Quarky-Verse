@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,11 +21,14 @@ using UnityEngine.UI;
 
 public class CollapseGlassesController : MonoBehaviour
 {
+    public static event Action<bool> OnGlassesToggled;
+    public static event Action<float> OnTimerUpdated;
+    public static event Action<QuantumObjectRole?> OnTargetHovered;
+    
     [SerializeField] private float _duration = 5f;
     [SerializeField] private float _radius = 10f;
     [SerializeField] private Camera _thirdPersonCamera;
     [SerializeField] private Camera _firstPersonCamera;
-    [SerializeField] private Slider _timerUI;
     
     private IHighlightable _currentHighlight;
     private SuperpositionController _currentTarget;
@@ -56,19 +60,15 @@ public class CollapseGlassesController : MonoBehaviour
 
         _thirdPersonCamera.enabled = false;
         _firstPersonCamera.enabled = true;
-        
         _collapsedObjects.Clear();
+        
+        OnGlassesToggled?.Invoke(true);
 
         float elapsed = 0f;
-        if (_timerUI != null)
-            _timerUI.gameObject.SetActive(true);
-
         while (elapsed < _duration)
         {
             elapsed += Time.deltaTime;
-            if (_timerUI != null)
-                _timerUI.value = 1f - elapsed / _duration;
-            
+            OnTimerUpdated?.Invoke(1f - (elapsed / _duration));
             yield return null;
         }
         
@@ -77,10 +77,6 @@ public class CollapseGlassesController : MonoBehaviour
 
         _firstPersonCamera.enabled = false;
         _thirdPersonCamera.enabled = true;
-        
-        if (_timerUI != null)
-            _timerUI.gameObject.SetActive(false);
-        
         _isActive = false;
         
         if (_currentHighlight != null) 
@@ -88,6 +84,8 @@ public class CollapseGlassesController : MonoBehaviour
             _currentHighlight.SetHighlight(false);
             _currentHighlight = null;
         }
+
+        OnGlassesToggled?.Invoke(false);
     }
 
     private void UpdateTarget()
@@ -101,12 +99,14 @@ public class CollapseGlassesController : MonoBehaviour
                 if (!target.IsGhostOnly)
                 {
                     _currentTarget = target;
+                    OnTargetHovered?.Invoke(target.Role); 
                     return;
                 }
             }
         }
         
         _currentTarget = null;
+        OnTargetHovered?.Invoke(null);
     }
 
     private void HandleHighlight() 
