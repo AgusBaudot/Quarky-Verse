@@ -55,7 +55,11 @@ namespace Enemies_Hazards
                 if (inRange)
                     OnTargetSpotted?.Invoke();
                 else
+                {
+                    _attackComponent?.CancelAttack();
+                    _locomotionComponent?.EnableLocomotion();
                     OnTargetLost?.Invoke();
+                }
             }
         }
 

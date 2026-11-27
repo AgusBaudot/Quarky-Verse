@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Pool;
 
 namespace Enemies_Hazards
@@ -8,10 +9,25 @@ namespace Enemies_Hazards
     {
         private IObjectPool<Projectile> _pool;
         private Rigidbody _rb;
+        private bool _isReleased;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
+        }
+
+        private void OnEnable()
+        {
+            _isReleased = false;
+        }
+
+        private void ReturnToPool()
+        {
+            if (_isReleased)
+                return;
+            
+            _isReleased = true;
+            _pool.Release(this);
         }
 
         public void SetPool(IObjectPool<Projectile> pool) => _pool = pool;
@@ -28,8 +44,10 @@ namespace Enemies_Hazards
                 Debug.Log("Projectile Hit Player!");
             }
 
-            if (_pool != null) _pool.Release(this);
-            else gameObject.SetActive(false);
+            if (_pool != null) 
+                ReturnToPool();
+            else 
+                gameObject.SetActive(false);
         }
     }
 }

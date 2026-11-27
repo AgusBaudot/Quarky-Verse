@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Enemies_Hazards
 {
     [RequireComponent(typeof(AIAgent), typeof(Rigidbody))]
     public class BoundingLocomotion : MonoBehaviour, IAILocomotion
     {
+        public event Action OnJumpStarted;
+        
         private AIAgent _agent;
         private Rigidbody _rb;
         private bool _canMove = true;
@@ -62,6 +65,7 @@ namespace Enemies_Hazards
             finalVelocity.y = verticalVelocity;
 
             _rb.velocity = finalVelocity;
+            OnJumpStarted?.Invoke();
         }
     }
 }

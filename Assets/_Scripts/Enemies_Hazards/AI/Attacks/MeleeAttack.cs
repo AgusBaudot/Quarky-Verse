@@ -7,7 +7,6 @@ namespace Enemies_Hazards
     public class MeleeAttack : MonoBehaviour, IAIAttack
     {
         [SerializeField] private DamageDealer _damageHitbox;
-        [SerializeField] private Animator _animator;
     
         private AIAgent _agent;
         private Coroutine _attackCoroutine;
@@ -32,8 +31,6 @@ namespace Enemies_Hazards
 
         private IEnumerator AttackRoutine()
         {
-            if (_animator != null) _animator.SetTrigger("Attack");
-        
             yield return new WaitForSeconds(_agent.Stats.AttackStartupTime);
         
             if (_damageHitbox != null) _damageHitbox.gameObject.SetActive(true);
