@@ -1506,10 +1506,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064cc5c385c43c54db748aa7c7f914f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCharacter: {fileID: 491859994}
-  _shodriCharacter: {fileID: 1075849253}
+  _toggleKey: 113
+  _quarkyCharacter: {fileID: 491859994}
+  _shrodriCharacter: {fileID: 1075849254}
+  _collapseGlasses: {fileID: 491859998}
   _thirdPersonCamera: {fileID: 1411728851}
   _firstPersonCamera: {fileID: 1309668099}
+  _ghostLayerName: Ghost
+  _invalidRecombineMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &69861827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10490,6 +10496,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _interactionUI: {fileID: 0}
+--- !u!114 &491859998 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1000668277021007903, guid: 34aefc256ee43554b9bd6f0f2c75e79e, type: 3}
+  m_PrefabInstance: {fileID: 491859991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491859993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a39bc9ae73ae44d9845058900ae914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &491943682
 GameObject:
   m_ObjectHideFlags: 0
@@ -23820,15 +23837,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1115537408397894711, guid: 4063aeec98f720140878ecded95c172c, type: 3}
   m_PrefabInstance: {fileID: 1075849251}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1075849253 stripped
+--- !u!114 &1075849254 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3075225613412042231, guid: 4063aeec98f720140878ecded95c172c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 9052948293783390957, guid: 4063aeec98f720140878ecded95c172c, type: 3}
   m_PrefabInstance: {fileID: 1075849251}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7e8762abb0dc944823de586c015d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 606db03832fa4d34b884b4ccf64bbefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1078940193
@@ -28448,7 +28465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6db77b61b4497b4abd8bc195c97e173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 491859992}
+  _target: {fileID: 0}
   _targetOffset: {x: 0, y: 1, z: 0.5}
   _mouseSensitivityX: 3
   _mouseSensitivityY: 2
@@ -31100,7 +31117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5fef272a1e4ae9836cf129a9a75cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 491859992}
+  _target: {fileID: 0}
   _targetOffset: {x: 0, y: 1, z: 0}
   _defaultDistance: 4
   _minDistance: 1
