@@ -1,43 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FallSpawn : MonoBehaviour
 {
-    [Header("Configuración de Teleport")]
-    [SerializeField, Tooltip("Arrastra aquí el Empty que marca el punto de Spawn")]
-    private Transform _spawnPoint;
+    [Header("Referencias")]
+    [SerializeField] private CheckpointManager _checkpointManager;
+    [SerializeField, Tooltip("Opcional: solo se usa si no hay CheckpointManager en la escena")]
+    private Transform _fallbackSpawnPoint;
 
+    [Header("Configuración")]
     [SerializeField, Tooltip("Tag que tiene el objeto del Jugador")]
     private string _playerTag = "Player";
+    [SerializeField, Tooltip("Si está activo, al caer también restaura la vida al máximo")]
+    private bool _resetHealthOnFall = true;
 
-    
+    private void Awake()
+    {
+        if (_checkpointManager == null)
+            _checkpointManager = FindObjectOfType<CheckpointManager>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.CompareTag(_playerTag))
+        if (!other.CompareTag(_playerTag)) return;
+
+        if (_checkpointManager != null)
         {
-            TeleportPlayer(other.gameObject);
+            _checkpointManager.RespawnPlayer(_resetHealthOnFall);
+        }
+        else
+        {
+            TeleportToFallback(other.gameObject);
         }
     }
 
-    private void TeleportPlayer(GameObject player)
+    private void TeleportToFallback(GameObject player)
     {
-        if (_spawnPoint == null)
-        {
-            return;
-        }
+        if (_fallbackSpawnPoint == null) return;
 
-        
         CharacterController cc = player.GetComponent<CharacterController>();
-        
         if (cc != null) cc.enabled = false;
 
-        player.transform.position = _spawnPoint.position;
-        player.transform.rotation = _spawnPoint.rotation;
+        player.transform.SetPositionAndRotation(_fallbackSpawnPoint.position, _fallbackSpawnPoint.rotation);
 
         if (cc != null) cc.enabled = true;
-
-        
     }
 }

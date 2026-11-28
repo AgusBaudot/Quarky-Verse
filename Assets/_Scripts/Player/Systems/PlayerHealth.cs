@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth Instance { get; private set; }
 
     [Header("Health")]
-    [SerializeField] private int _maxHealth = 3;
+    [SerializeField] private int _maxHealth = 1;
 
     private int _currentHealth;
     private bool _isInvulnerable;

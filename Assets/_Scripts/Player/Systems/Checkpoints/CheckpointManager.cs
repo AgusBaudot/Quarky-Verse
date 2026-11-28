@@ -5,6 +5,7 @@ public class CheckpointManager : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] private Transform _player;
     [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] private CharacterSwapManager _characterSwapManager;
 
     private CharacterController _characterController;
 
@@ -15,7 +16,6 @@ public class CheckpointManager : MonoBehaviour
     private Quaternion _checkpointRotation;
     private bool _hasCheckpoint;
 
-    [SerializeField] private CharacterSwapManager _characterSwapManager;
     private void Awake()
     {
         if (_characterSwapManager == null) _characterSwapManager = FindObjectOfType<CharacterSwapManager>();
@@ -27,7 +27,9 @@ public class CheckpointManager : MonoBehaviour
             Debug.LogError("CheckpointManager: asigná el jugador en el Inspector.", this);
             return;
         }
+
         _characterController = _player.GetComponent<CharacterController>();
+
         _startPosition = _player.position;
         _startRotation = _player.rotation;
         _checkpointPosition = _startPosition;
@@ -46,15 +48,26 @@ public class CheckpointManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
+        RespawnPlayer(true);
+    }
+
+    public void RespawnPlayer(bool resetHealth)
+    {
         if (_characterSwapManager != null) _characterSwapManager.ReturnToMainCharacter();
         if (_player == null) return;
+
         Vector3 spawnPosition = _hasCheckpoint ? _checkpointPosition : _startPosition;
         Quaternion spawnRotation = _hasCheckpoint ? _checkpointRotation : _startRotation;
+
         bool controllerWasEnabled = _characterController != null && _characterController.enabled;
         if (controllerWasEnabled) _characterController.enabled = false;
+
         _player.SetPositionAndRotation(spawnPosition, spawnRotation);
+
         if (controllerWasEnabled) _characterController.enabled = true;
-        if (_playerHealth != null) _playerHealth.ResetHealth();
-        Debug.Log($"Respawn: checkpoint activo={_hasCheckpoint}, jugador={_player.name}, destino={spawnPosition}",this);
+
+        if (resetHealth && _playerHealth != null) _playerHealth.ResetHealth();
+
+        Debug.Log($"Respawn: checkpoint activo={_hasCheckpoint}, jugador={_player.name}, destino={spawnPosition}", this);
     }
 }
