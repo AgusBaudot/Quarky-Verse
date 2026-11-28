@@ -61705,7 +61705,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604592072819572863, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
       propertyPath: _guideText
-      value: Explicaicon Superposicion
+      value: "Detecto objetos rojizos en estado de superposici\xF3n. Presiona [E]
+        para activar tus Gafas de Superposici\xF3n y ap\xFAntalos: al observarlos,
+        quedar\xE1n fijos en esa posici\xF3n para que puedas usarlos como plataforma.
+        Tambien puedes pisarlos y estos se quedaran fijos al contacto."
       objectReference: {fileID: 0}
     - target: {fileID: 2160205161880016475, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
       propertyPath: m_Name
@@ -61750,6 +61753,10 @@ PrefabInstance:
     - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8541025788093748279, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_text
+      value: Explicaicon Superposicion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -87421,6 +87428,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+--- !u!1001 &2137272574
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 378511650928836778, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_Size.z
+      value: 5.8302307
+      objectReference: {fileID: 0}
+    - target: {fileID: 378511650928836778, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_Center.z
+      value: 0.41511536
+      objectReference: {fileID: 0}
+    - target: {fileID: 604592072819572863, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: _guideText
+      value: Presiona la tecla F para accionar los botones
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160205161880016475, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_Name
+      value: QB2_GuideZone (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.8408394
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 73.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283961784546251599, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 297d148f8a52f06448e3fa533de02a44, type: 3}
 --- !u!1001 &2139296774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88772,3 +88848,4 @@ SceneRoots:
   - {fileID: 1638628200}
   - {fileID: 1803442621}
   - {fileID: 159683641}
+  - {fileID: 2137272574}
