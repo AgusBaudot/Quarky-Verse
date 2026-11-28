@@ -22,19 +22,22 @@ namespace Enemies_Hazards
         {
             if (!_canMove || _agent.Target == null) return;
 
-            Vector3 direction = (_agent.Target.position - transform.position).normalized;
-            direction.y = 0;
+            Vector3 destination = _agent.CurrentDestination;
+            Vector3 toDestination = destination - transform.position;
+            toDestination.y = 0f;
 
-            if (direction != Vector3.zero)
+            float horizontalDistance = toDestination.magnitude;
+            float stopDistance = _agent.IsTargetInDetectionRange
+                ? _agent.Stats.AttackRange
+                : _agent.Stats.SpawnReturnThreshold;
+
+            if (horizontalDistance > stopDistance)
             {
+                Vector3 direction = toDestination / horizontalDistance;
+
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
-            }
 
-            float distance = Vector3.Distance(transform.position, _agent.Target.position);
-    
-            if (distance > _agent.Stats.AttackRange)
-            {
                 Vector3 velocity = direction * _agent.Stats.MaxSpeed;
                 velocity.y = _rb.velocity.y;
                 _rb.velocity = velocity;
@@ -42,7 +45,9 @@ namespace Enemies_Hazards
             else
             {
                 _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
-                _agent.InitiateAttack();
+
+                if (_agent.IsTargetInDetectionRange)
+                    _agent.InitiateAttack();
             }
         }
     }

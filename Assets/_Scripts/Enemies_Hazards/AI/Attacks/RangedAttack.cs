@@ -51,18 +51,18 @@ namespace Enemies_Hazards
 
         private IEnumerator FireRoutine()
         {
-            while (true)
-            {
-                Vector3 direction = (_agent.Target.position - _firePoint.position).normalized;
+            Vector3 direction = (_agent.Target.position - _firePoint.position).normalized;
 
-                Projectile projectile = _pool.Get();
-                projectile.transform.position = _firePoint.position;
-                projectile.transform.rotation = Quaternion.LookRotation(direction);
+            Projectile projectile = _pool.Get();
+            projectile.transform.position = _firePoint.position;
+            projectile.transform.rotation = Quaternion.LookRotation(direction);
 
-                projectile.Launch(direction * _projectileSpeed);
+            projectile.Launch(direction * _projectileSpeed);
 
-                yield return new WaitForSeconds(_fireRate);
-            }
+            yield return new WaitForSeconds(_fireRate);
+
+            _fireCoroutine = null;
+            GetComponent<IAILocomotion>()?.EnableLocomotion();
         }
     }
 }

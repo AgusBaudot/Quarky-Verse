@@ -5,12 +5,15 @@ namespace Enemies_Hazards
     [CreateAssetMenu(fileName = "NewEnemyStats", menuName = "QuarkyVerse/AI/Enemy Stats")]
     public class EnemyStatsSO : ScriptableObject
     {
-        [Header("Locomotion")] [Tooltip("Must be strictly less than the player's run speed for base enemies.")]
+        [Header("Locomotion")]
+        [Tooltip("Must be strictly less than the player's run speed for base enemies.")]
         public float MaxSpeed = 5f;
         public float Acceleration = 15f;
         public float DetectionRadius = 10f;
+        [Tooltip("How close the enemy must get to its spawn point before stopping.")]
+        public float SpawnReturnThreshold = 0.25f;
 
-        [Header("Attack")] 
+        [Header("Attack")]
         public float AttackRange = 1.5f;
         public float AttackStartupTime = 0.2f;
         public float AttackActiveFramesDuration = 0.3f;

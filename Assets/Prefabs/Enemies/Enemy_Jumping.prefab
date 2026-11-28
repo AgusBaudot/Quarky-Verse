@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 2580599074774858773}
   - component: {fileID: 5467731161778696611}
   - component: {fileID: 1971634294350838043}
+  - component: {fileID: 6112829758174989748}
   m_Layer: 7
   m_Name: Enemy_Jumping
   m_TagString: Untagged
@@ -245,6 +246,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4467e8f026774d158e20ac535e422c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6112829758174989748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5997622078254806363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719be54eeb63468e91016397a6a07101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1249947114059587712}
+  _jumpStartTrigger: JumpStart
+  _isGroundedParam: IsGrounded
+  _groundedVelocityThreshold: 0.1
 --- !u!1001 &5323094172445580313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -300,8 +317,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 60201d0d0bd53024ebc64b62c9832b4d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1249947114059587712}
   m_SourcePrefab: {fileID: 100100000, guid: 60201d0d0bd53024ebc64b62c9832b4d, type: 3}
+--- !u!1 &4980422788480180552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 60201d0d0bd53024ebc64b62c9832b4d, type: 3}
+  m_PrefabInstance: {fileID: 5323094172445580313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1249947114059587712
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980422788480180552}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d51636380b64bd4db8b17e1b2db91eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &5644651419029961714 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60201d0d0bd53024ebc64b62c9832b4d, type: 3}
