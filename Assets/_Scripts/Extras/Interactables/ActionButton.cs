@@ -5,7 +5,7 @@ public class ActionButton : MonoBehaviour, IInteractable
 {
     [Header("Button Settings")]
     [SerializeField] private Transform[] _players;
-    [SerializeField] private GameObject _targetDoor;
+    [SerializeField] private GameObject[] _targetsToDestroy;
     [SerializeField] private float _interactionRange = 2f;
     [SerializeField] private KeyCode _interactKey = KeyCode.F;
 
@@ -69,15 +69,23 @@ public class ActionButton : MonoBehaviour, IInteractable
     {
         if (IsActivated) return;
 
-        if (_targetDoor == null)
+        if (_targetsToDestroy == null || _targetsToDestroy.Length == 0)
         {
-            Debug.LogWarning($"No hay una puerta asignada al botón {name}.", this);
+            Debug.LogWarning($"No hay objetos asignados para destruir en el botón {name}.", this);
             return;
         }
 
         IsActivated = true;
-        Destroy(_targetDoor);
-        _targetDoor = null;
+
+        for (int i = 0; i < _targetsToDestroy.Length; i++)
+        {
+            if (_targetsToDestroy[i] != null)
+            {
+                Destroy(_targetsToDestroy[i]);
+                _targetsToDestroy[i] = null;
+            }
+        }
+
         _onPressed?.Invoke();
         UpdateVisual();
     }
