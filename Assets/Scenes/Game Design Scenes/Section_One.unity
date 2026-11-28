@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (627)
@@ -731,6 +735,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (691)
@@ -1227,6 +1235,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
       propertyPath: m_Name
       value: SP_VEG_Bush02 (35)
@@ -1512,7 +1524,7 @@ PrefabInstance:
     - target: {fileID: 8287181332567118081, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ac7d564a5995fe044b2fa404003ac881, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     m_RemovedComponents:
     - {fileID: 7636602499430441034, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
     - {fileID: 2045618027624508285, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
@@ -2038,6 +2050,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (686)
@@ -2622,6 +2638,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (699)
@@ -2865,7 +2885,7 @@ PrefabInstance:
         a la universidad para acabar con toda esta locura. \n\nComo veras la constante
         de plank no esta estable, nuestro deber es estabilizarla, vayamos a la universidad
         para ver que es realmente lo que esta pasando. \n\nUtiliza \"WASD\" Para
-        Moverte y \"SpaceBar\" para saltar\n"
+        Moverte y \"SpaceBar\" para saltar\n\nNos vemos mas adelante!!\n"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4011,6 +4031,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (603)
@@ -4995,10 +5019,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6068840352818391925, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
+    - target: {fileID: -4209430808703715957, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
       propertyPath: m_Name
       value: Collapsed Tree 1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3062103318849487842, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
+    - target: {fileID: 5535578510735535094, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5067,6 +5107,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (632)
@@ -10743,6 +10787,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (658)
@@ -11242,6 +11290,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (576)
@@ -11499,6 +11551,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
       propertyPath: m_Name
       value: SM_VEG_BUSH_v01 (6)
@@ -12566,6 +12622,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (687)
@@ -16360,6 +16420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collapsed Tree 1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3062103318849487842, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16428,6 +16492,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
       propertyPath: m_Name
       value: SM_VEG_BUSH_v01 (11)
@@ -18951,6 +19019,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
       propertyPath: m_Name
       value: SM_VEG_BUSH_v01 (10)
@@ -21051,6 +21123,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -87.223
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 535557a460fa45e4cac932dce1c7d9bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 535557a460fa45e4cac932dce1c7d9bc, type: 3}
       propertyPath: m_Name
       value: SM_VEG_Tree01 (11)
@@ -22617,6 +22693,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 41.793
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 535557a460fa45e4cac932dce1c7d9bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 535557a460fa45e4cac932dce1c7d9bc, type: 3}
       propertyPath: m_Name
       value: SM_VEG_Tree01
@@ -22856,6 +22936,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6068840352818391925, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
+    - target: {fileID: -4209430808703715957, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
       propertyPath: m_Name
       value: Collapsed Tree 1 (1)
@@ -23884,6 +23972,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b30add1ee380bb34a81dcd62bc38c649, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: b30add1ee380bb34a81dcd62bc38c649, type: 3}
       propertyPath: m_Name
       value: SM_PRP_StreetLamp (3)
@@ -25458,7 +25550,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27669,6 +27761,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (577)
@@ -27889,6 +27985,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 535557a460fa45e4cac932dce1c7d9bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 535557a460fa45e4cac932dce1c7d9bc, type: 3}
       propertyPath: m_Name
       value: Collapsed Regular Trees 9
@@ -29092,6 +29192,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (644)
@@ -29476,7 +29580,7 @@ PrefabInstance:
     - target: {fileID: 8287181332567118081, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ac7d564a5995fe044b2fa404003ac881, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     m_RemovedComponents:
     - {fileID: 7636602499430441034, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
     - {fileID: 2045618027624508285, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
@@ -30986,6 +31090,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1357923477e2db746880268a21d785e5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 40b0e74bce734d14eb5afc52f469351f, type: 2}
     - target: {fileID: 919132149155446097, guid: 1357923477e2db746880268a21d785e5, type: 3}
       propertyPath: m_Name
       value: Collapsed_PoliceStation
@@ -32486,6 +32594,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cd947eba11eb7974188dad6a0ca433bd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: cd947eba11eb7974188dad6a0ca433bd, type: 3}
       propertyPath: m_Name
       value: Collapsed_House01
@@ -33138,6 +33250,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b30add1ee380bb34a81dcd62bc38c649, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: b30add1ee380bb34a81dcd62bc38c649, type: 3}
       propertyPath: m_Name
       value: SM_PRP_StreetLamp (1)
@@ -33514,6 +33630,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
       propertyPath: m_Name
       value: SP_VEG_Bush02 (3)
@@ -34860,6 +34980,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (656)
@@ -35310,7 +35434,7 @@ PrefabInstance:
     - target: {fileID: 8287181332567118081, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ac7d564a5995fe044b2fa404003ac881, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     m_RemovedComponents:
     - {fileID: 7636602499430441034, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
     - {fileID: 2045618027624508285, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
@@ -35558,6 +35682,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (572)
@@ -35631,6 +35759,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 13.348
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 535557a460fa45e4cac932dce1c7d9bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 535557a460fa45e4cac932dce1c7d9bc, type: 3}
       propertyPath: m_Name
       value: Collapsed Regular Trees 19
@@ -39433,6 +39565,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
       propertyPath: m_Name
       value: SM_VEG_BUSH_v01 (15)
@@ -40466,6 +40602,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (701)
@@ -40745,15 +40885,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8628868679151590049, guid: ad2f30ed5689645419decdfdc7263560, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.149555
+      value: 39.71
       objectReference: {fileID: 0}
     - target: {fileID: 8628868679151590049, guid: ad2f30ed5689645419decdfdc7263560, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.91
+      value: 6.65
       objectReference: {fileID: 0}
     - target: {fileID: 8628868679151590049, guid: ad2f30ed5689645419decdfdc7263560, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.923473
+      value: 18.85
       objectReference: {fileID: 0}
     - target: {fileID: 8628868679151590049, guid: ad2f30ed5689645419decdfdc7263560, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42941,6 +43081,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b30add1ee380bb34a81dcd62bc38c649, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: b30add1ee380bb34a81dcd62bc38c649, type: 3}
       propertyPath: m_Name
       value: SM_PRP_StreetLamp (2)
@@ -43770,6 +43914,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
       propertyPath: m_Name
       value: SM_VEG_BUSH_v01 (8)
@@ -43868,7 +44016,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8add39c03c7d494c9c0ac1f3a6373b0, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -44216,6 +44364,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
       propertyPath: m_Name
       value: SP_VEG_Bush02 (30)
@@ -45892,6 +46044,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
       propertyPath: m_Name
       value: SM_VEG_BUSH_v01
@@ -48698,6 +48854,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2796056e243627b46b589565d0da0dd2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 526bc1683c206494fad3f40ca5b60640, type: 2}
     - target: {fileID: 919132149155446097, guid: 2796056e243627b46b589565d0da0dd2, type: 3}
       propertyPath: m_Name
       value: Collapsed_Hospital
@@ -48758,6 +48918,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (649)
@@ -49141,6 +49305,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (711)
@@ -49218,6 +49386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collapsed Tree 1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3062103318849487842, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -51039,6 +51211,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (626)
@@ -51173,7 +51349,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -52324,6 +52500,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
       propertyPath: m_Name
       value: SM_VEG_BUSH_v01 (14)
@@ -56516,6 +56696,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (604)
@@ -57386,6 +57570,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
       propertyPath: m_Name
       value: SP_VEG_Bush02 (18)
@@ -58393,10 +58581,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6068840352818391925, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
       propertyPath: m_Name
       value: Collapsed Tree 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5535578510735535094, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58538,6 +58734,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (623)
@@ -59663,6 +59863,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (689)
@@ -60173,6 +60377,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2079339490355741182, guid: ea74511e3594e3a41be2fa74e0850511, type: 3}
+    - {fileID: 8519221053193542191, guid: ea74511e3594e3a41be2fa74e0850511, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ea74511e3594e3a41be2fa74e0850511, type: 3}
@@ -61132,6 +61337,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (647)
@@ -61705,6 +61914,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
       propertyPath: m_Name
       value: SP_VEG_Bush02 (31)
@@ -63200,6 +63413,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (602)
@@ -63360,6 +63577,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (697)
@@ -63650,6 +63871,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b30add1ee380bb34a81dcd62bc38c649, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: b30add1ee380bb34a81dcd62bc38c649, type: 3}
       propertyPath: m_Name
       value: SM_PRP_StreetLamp (5)
@@ -63713,7 +63938,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8add39c03c7d494c9c0ac1f3a6373b0, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -63812,6 +64037,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (598)
@@ -63996,6 +64225,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (654)
@@ -64805,7 +65038,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8add39c03c7d494c9c0ac1f3a6373b0, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -64904,6 +65137,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (619)
@@ -65248,6 +65485,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (637)
@@ -65524,7 +65765,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -65617,6 +65858,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (718)
@@ -66165,6 +66410,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (382)
@@ -67241,7 +67490,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67546,6 +67795,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (681)
@@ -70325,7 +70578,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bb33e50f6bc13d48a3e72f706b37f38, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70715,6 +70968,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 44.705
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 535557a460fa45e4cac932dce1c7d9bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 535557a460fa45e4cac932dce1c7d9bc, type: 3}
       propertyPath: m_Name
       value: SM_VEG_Tree01 (12)
@@ -71504,7 +71761,7 @@ PrefabInstance:
     - target: {fileID: 8287181332567118081, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ac7d564a5995fe044b2fa404003ac881, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     m_RemovedComponents:
     - {fileID: 7636602499430441034, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
     - {fileID: 2045618027624508285, guid: 05eb852061f5e2140a80dd6545cd652a, type: 3}
@@ -72067,7 +72324,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8add39c03c7d494c9c0ac1f3a6373b0, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73517,6 +73774,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
       propertyPath: m_Name
       value: SM_VEG_BUSH_v01 (7)
@@ -75347,6 +75608,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: d49fc84499eb7d643abbe19d4da8013e, type: 3}
       propertyPath: m_Name
       value: SP_VEG_Bush02 (36)
@@ -77502,6 +77767,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (683)
@@ -77801,7 +78070,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8add39c03c7d494c9c0ac1f3a6373b0, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78656,6 +78925,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: cff9f8a6107906e49ba362991c8b9d80, type: 3}
       propertyPath: m_Name
       value: SM_VEG_BUSH_v01 (4)
@@ -80122,6 +80395,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (571)
@@ -80195,6 +80472,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4209430808703715957, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: e34cba6a1be2daf4c92ac00a447d8136, type: 3}
       propertyPath: m_Name
       value: Collapsed Tree 1 (6)
@@ -80334,7 +80615,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bb33e50f6bc13d48a3e72f706b37f38, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80644,6 +80925,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (599)
@@ -82137,6 +82422,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (662)
@@ -82198,6 +82487,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (695)
@@ -85365,6 +85658,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2079339490355741182, guid: ea74511e3594e3a41be2fa74e0850511, type: 3}
+    - {fileID: 8519221053193542191, guid: ea74511e3594e3a41be2fa74e0850511, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ea74511e3594e3a41be2fa74e0850511, type: 3}
@@ -85901,7 +86195,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8add39c03c7d494c9c0ac1f3a6373b0, type: 2}
+  - {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88003,6 +88297,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 45b8a44c6c50bd94aaf3c1145111e38c, type: 3}
     - target: {fileID: 919132149155446097, guid: 2b16e97496839014696ce1fd202906b2, type: 3}
       propertyPath: m_Name
       value: SM_ARCH_Fences01_V01 (601)
