@@ -17,7 +17,9 @@ public class ObjectDetectionSystem : MonoBehaviour
     void Update()
     {
         DetectObject();
-        if (Input.GetKeyDown(KeyCode.F)) Interact();
+        if (Input.GetKeyDown(KeyCode.E) && !(_currentInteractable is ActionButton)) Interact();
+        if (Input.GetKeyDown(KeyCode.F) && _currentInteractable is ActionButton) Interact();
+        
     }
 
     private void DetectObject()
@@ -46,6 +48,12 @@ public class ObjectDetectionSystem : MonoBehaviour
 
     private void Interact()
     {
+        if (_currentInteractable is ActionButton button)
+        {
+            float distance = Vector3.Distance(transform.position,button.transform.position);
+            if (distance <= button.InteractionRange) button.OnInteract();
+            return;
+        }
         _currentInteractable?.OnInteract();
     }
 
